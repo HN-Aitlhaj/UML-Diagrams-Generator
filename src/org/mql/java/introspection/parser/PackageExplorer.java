@@ -1,4 +1,4 @@
-package org.mql.java;
+package org.mql.java.introspection.parser;
 
 import java.io.File;
 
