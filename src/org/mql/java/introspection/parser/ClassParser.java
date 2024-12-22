@@ -76,7 +76,7 @@ public class ClassParser {
 		
 		List<Field> fields = new Vector<Field>();
 		for( java.lang.reflect.Field field : cls.getDeclaredFields() ) {
-			fields.add(new Field(field.getName(), field.getType().getName(), getModifier(field.getModifiers())));
+			fields.add(new Field(field.getName(), field.getType(), getModifier(field.getModifiers())));
 		}
 		return fields;
 	}

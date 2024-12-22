@@ -3,14 +3,14 @@ package org.mql.java.introspection.models;
 public class Field {
 
 	private String name;
-	private String type;
+	private Class<?> type;
 	private String modifier;
 	
 	public Field() {
 		super();
 	}
 
-	public Field(String name, String type, String modifier) {
+	public Field(String name, Class<?> type, String modifier) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -25,11 +25,11 @@ public class Field {
 		this.name = name;
 	}
 
-	public String getType() {
+	public Class<?> getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Class<?> type) {
 		this.type = type;
 	}
 

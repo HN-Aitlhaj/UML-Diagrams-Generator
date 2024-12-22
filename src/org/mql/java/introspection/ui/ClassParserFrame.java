@@ -86,7 +86,7 @@ public class ClassParserFrame extends JFrame {
             for (Field field : parser.getFields()) {
                 appendText(doc, "  ", 14, Color.BLACK, false);
                 appendText(doc, field.getModifier() + " ", 14, Color.GREEN, false);
-                appendText(doc, field.getType() + " " + field.getName() + "\n", 14, Color.BLACK, false);
+                appendText(doc, field.getType().getName() + " " + field.getName() + "\n", 14, Color.BLACK, false);
             }
 
             // Constructeurrs
