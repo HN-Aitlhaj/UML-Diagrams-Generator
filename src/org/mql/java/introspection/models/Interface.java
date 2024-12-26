@@ -10,13 +10,20 @@ public class Interface {
 	private List<Field> fields;
 	private List<Method> methods;
 	
-	
 	public Interface() {
 		
 		fields = new Vector<Field>();
 		methods = new Vector<Method>();
 	}
 
+
+	public Interface(String name, Class<?> superClass, List<Field> fields, List<Method> methods) {
+		super();
+		this.name = name;
+		this.superClass = superClass;
+		this.fields = fields;
+		this.methods = methods;
+	}
 
 	public String getName() {
 		return name;
@@ -63,8 +70,5 @@ public class Interface {
 		return "Interface [name=" + name + ", superClass=" + superClass + ", fields=" + fields + ", methods=" + methods
 				+ "]";
 	}
-
-
 	
-
 }

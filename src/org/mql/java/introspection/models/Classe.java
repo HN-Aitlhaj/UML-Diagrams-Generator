@@ -8,7 +8,7 @@ public class Classe {
 	private String name;
 	private String modifier;
 	private Classe superClass;
-	private List<String> interfaces;
+	private List<Interface> interfaces;
 	private List<Field> fields;
 	private List<Constructeur> constructors;
 	private List<Method> methods; 
@@ -16,14 +16,14 @@ public class Classe {
 	
 	
 	public Classe() {
-		interfaces = new Vector<String>();
+		interfaces = new Vector<Interface>();
 		fields = new Vector<Field>();
 		constructors = new Vector<Constructeur>();
 		methods = new Vector<Method>(); 
 		internClasses = new Vector<Classe>();
 	}
 
-	public Classe(String name, String modifier, Classe superClass, List<String> interfaces, List<Field> fields,
+	public Classe(String name, String modifier, Classe superClass, List<Interface> interfaces, List<Field> fields,
 			List<Constructeur> constructors, List<Method> methods, List<Classe> internClasses) {
 		super();
 		this.name = name;
@@ -60,11 +60,11 @@ public class Classe {
 		this.superClass = superClass;
 	}
 
-	public List<String> getInterfaces() {
+	public List<Interface> getInterfaces() {
 		return interfaces;
 	}
 
-	public void setInterfaces(List<String> interfaces) {
+	public void setInterfaces(List<Interface> interfaces) {
 		this.interfaces = interfaces;
 	}
 	

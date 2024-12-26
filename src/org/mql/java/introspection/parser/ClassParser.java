@@ -9,6 +9,7 @@ import java.util.Vector;
 import org.mql.java.introspection.models.Classe;
 import org.mql.java.introspection.models.Constructeur;
 import org.mql.java.introspection.models.Field;
+import org.mql.java.introspection.models.Interface;
 import org.mql.java.introspection.models.Method;
 
 public class ClassParser {
@@ -33,7 +34,7 @@ public class ClassParser {
 		classe.setSuperClass(getSuperclass());
 		classe.setInterfaces(getInterfaces());
 		classe.setConstructors(getConstructors());
-		classe.setMethods(getMethods());
+		classe.setMethods(getMethods(cls));
 		classe.setInternClasses(getInternClasses());
 		return classe;
 	}
@@ -59,23 +60,15 @@ public class ClassParser {
 	}
 	
 
-	public List<String> getInterfaces(){
-		List<String> interfaces = new Vector<String>();
+	public List<Interface> getInterfaces(){
+		List<Interface> interfaces = new Vector<Interface>();
 		
 		for(Class<?> interfaceClass : cls.getInterfaces()) {
-			interfaces.add(interfaceClass.getName());
+			
+			interfaces.add(new Interface(interfaceClass.getName(), interfaceClass.getSuperclass(), getFields(interfaceClass),getMethods(interfaceClass)));
 		}
 		
 		return interfaces;
-	}
-	
-	public List<Field> getFields() {
-		
-		List<Field> fields = new Vector<Field>();
-		for( java.lang.reflect.Field field : cls.getDeclaredFields() ) {
-			fields.add(new Field(field.getName(), field.getType(), getModifier(field.getModifiers())));
-		}
-		return fields;
 	}
 	
 	public List<Constructeur> getConstructors(){
@@ -88,7 +81,34 @@ public class ClassParser {
 		return constructeurs;
 	}
 	
+	public List<Field> getFields() {
+		
+		List<Field> fields = new Vector<Field>();
+		for( java.lang.reflect.Field field : cls.getDeclaredFields() ) {
+			fields.add(new Field(field.getName(), field.getType(), getModifier(field.getModifiers())));
+		}
+		return fields;
+	}
+	
+	public List<Field> getFields(Class<?> cls) {
+		
+		List<Field> fields = new Vector<Field>();
+		for( java.lang.reflect.Field field : cls.getDeclaredFields() ) {
+			fields.add(new Field(field.getName(), field.getType(), getModifier(field.getModifiers())));
+		}
+		return fields;
+	}
+	
 	public List<Method> getMethods() {
+		
+		List<Method> methods = new Vector<Method>();
+		for(java.lang.reflect.Method method : cls.getDeclaredMethods() ) {
+			methods.add(new Method(method.getName(),getModifier(method.getModifiers()),method.getReturnType().getName(), Arrays.asList( method.getParameterTypes() )));
+		}
+		return methods;
+	}
+	
+	public List<Method> getMethods(Class<?> cls) {
 		
 		List<Method> methods = new Vector<Method>();
 		for(java.lang.reflect.Method method : cls.getDeclaredMethods() ) {
