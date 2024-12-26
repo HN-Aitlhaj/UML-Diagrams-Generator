@@ -14,14 +14,12 @@ import org.mql.java.introspection.models.Method;
 public class ClassParser {
 	
 	private Class<?> cls;
-	public Classe classe;
 
 	public ClassParser(String className) { 
 		//File classFile = new File(className);
 		//Class<?> cls = classFile.getClass();
 		try {
 			this.cls = Class.forName(className);
-			this.classe = getClasse();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -37,7 +35,6 @@ public class ClassParser {
 		classe.setConstructors(getConstructors());
 		classe.setMethods(getMethods());
 		classe.setInternClasses(getInternClasses());
-		
 		return classe;
 	}
 	

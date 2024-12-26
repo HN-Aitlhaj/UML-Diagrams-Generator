@@ -58,7 +58,7 @@ public class ClassParserFrame extends JFrame {
 
         try {
             ClassParser parser = new ClassParser(className);
-            Classe classe = parser.classe;
+            Classe classe = parser.getClasse();
 
             outputPane.setText("");
 
