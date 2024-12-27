@@ -6,21 +6,22 @@ import java.util.Vector;
 public class Interface {
 	
 	private String name;
-	private Class<?> superClass;
+	private List<Interface> extendedInterfaces;
 	private List<Field> fields;
 	private List<Method> methods;
 	
 	public Interface() {
 		
+		extendedInterfaces = new Vector<Interface>();
 		fields = new Vector<Field>();
 		methods = new Vector<Method>();
 	}
 
 
-	public Interface(String name, Class<?> superClass, List<Field> fields, List<Method> methods) {
+	public Interface(String name, List<Interface> extendedInterfaces, List<Field> fields, List<Method> methods) {
 		super();
 		this.name = name;
-		this.superClass = superClass;
+		this.extendedInterfaces = extendedInterfaces;
 		this.fields = fields;
 		this.methods = methods;
 	}
@@ -35,13 +36,13 @@ public class Interface {
 	}
 
 
-	public Class<?> getSuperClass() {
-		return superClass;
+	public List<Interface> getExtendedInterfaces() {
+		return extendedInterfaces;
 	}
 
 
-	public void setSuperClass(Class<?> superClass) {
-		this.superClass = superClass;
+	public void setExtendedInterfaces(List<Interface> extendedInterfaces) {
+		this.extendedInterfaces = extendedInterfaces;
 	}
 
 
@@ -67,7 +68,7 @@ public class Interface {
 
 	@Override
 	public String toString() {
-		return "Interface [name=" + name + ", superClass=" + superClass + ", fields=" + fields + ", methods=" + methods
+		return "Interface [name=" + name + ", extendedInterfaces=" + extendedInterfaces + ", fields=" + fields + ", methods=" + methods
 				+ "]";
 	}
 	

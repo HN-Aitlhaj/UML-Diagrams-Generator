@@ -43,6 +43,10 @@ public class Package {
 	public void setClasses(List<Classe> classes) {
 		this.classes = classes;
 	}
+	
+	public void addClasse(Classe classe) {
+		this.classes.add(classe);
+	}
 
 	public List<Interface> getInterfaces() {
 		return interfaces;

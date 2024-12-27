@@ -25,7 +25,6 @@ public class ClassParser {
 			e.printStackTrace();
 		}
 	}
-
 	
 	public Classe getClasse() {
 		Classe classe = new Classe();
@@ -34,13 +33,13 @@ public class ClassParser {
 		classe.setSuperClass(getSuperclass());
 		classe.setInterfaces(getInterfaces());
 		classe.setConstructors(getConstructors());
-		classe.setMethods(getMethods(cls));
+		classe.setMethods(getMethods());
 		classe.setInternClasses(getInternClasses());
 		return classe;
 	}
 	
 	public String getModifier() {
-		return Modifier.toString(cls.getModifiers());
+		return getModifier(cls.getModifiers());
 	}
 	
 	private String getModifier(int modifier) {
@@ -50,7 +49,8 @@ public class ClassParser {
 	public Classe getSuperclass(){
 		
 		Classe classe = new Classe();
-		classe.setName(cls.getSuperclass().getSimpleName());
+		String superClass = cls.getSuperclass() !=null ? cls.getSuperclass().getSimpleName() : null;
+		classe.setName(superClass);
 		classe.setModifier(getModifier());
 		classe.setInterfaces(getInterfaces());
 		classe.setConstructors(getConstructors());
@@ -59,35 +59,36 @@ public class ClassParser {
 		return classe;
 	}
 	
-
 	public List<Interface> getInterfaces(){
+		return getInterfaces(cls);
+	}
+	
+	public List<Interface> getInterfaces(Class<?> classe){
 		List<Interface> interfaces = new Vector<Interface>();
-		
-		for(Class<?> interfaceClass : cls.getInterfaces()) {
+		if(classe.getInterfaces().length == 0) return interfaces;
+		for(Class<?> interfaceClass : classe.getInterfaces()) {
 			
-			interfaces.add(new Interface(interfaceClass.getName(), interfaceClass.getSuperclass(), getFields(interfaceClass),getMethods(interfaceClass)));
+			interfaces.add(new Interface(interfaceClass.getSimpleName(),getInterfaces(interfaceClass),
+					getFields(interfaceClass),getMethods(interfaceClass)));
 		}
-		
 		return interfaces;
 	}
+	
 	
 	public List<Constructeur> getConstructors(){
 		Constructor<?>[] consts = cls.getDeclaredConstructors();
 		
 		List<Constructeur> constructeurs = new Vector<Constructeur>();
 		for(Constructor<?> construct : consts ) {
-			constructeurs.add(new Constructeur(construct.getName(),Modifier.toString(construct.getModifiers()), Arrays.asList( construct.getParameterTypes() )));
+			constructeurs.add(new Constructeur(construct.getName(),Modifier.toString(construct.getModifiers()), 
+					Arrays.asList( construct.getParameterTypes() )));
 		}
 		return constructeurs;
 	}
 	
 	public List<Field> getFields() {
 		
-		List<Field> fields = new Vector<Field>();
-		for( java.lang.reflect.Field field : cls.getDeclaredFields() ) {
-			fields.add(new Field(field.getName(), field.getType(), getModifier(field.getModifiers())));
-		}
-		return fields;
+		return getFields(cls);
 	}
 	
 	public List<Field> getFields(Class<?> cls) {
@@ -101,18 +102,15 @@ public class ClassParser {
 	
 	public List<Method> getMethods() {
 		
-		List<Method> methods = new Vector<Method>();
-		for(java.lang.reflect.Method method : cls.getDeclaredMethods() ) {
-			methods.add(new Method(method.getName(),getModifier(method.getModifiers()),method.getReturnType().getName(), Arrays.asList( method.getParameterTypes() )));
-		}
-		return methods;
+		return getMethods(cls);
 	}
 	
-	public List<Method> getMethods(Class<?> cls) {
+	private List<Method> getMethods(Class<?> cls) {
 		
 		List<Method> methods = new Vector<Method>();
 		for(java.lang.reflect.Method method : cls.getDeclaredMethods() ) {
-			methods.add(new Method(method.getName(),getModifier(method.getModifiers()),method.getReturnType().getName(), Arrays.asList( method.getParameterTypes() )));
+			methods.add(new Method(method.getName(),getModifier(method.getModifiers()),
+					method.getReturnType().getName(), Arrays.asList( method.getParameterTypes() )));
 		}
 		return methods;
 	}
@@ -121,7 +119,7 @@ public class ClassParser {
 		List<Classe> internClasses = new Vector<Classe>();
 		Classe internClasse = new Classe();
 		for(Class<?> internCls : cls.getDeclaredClasses()) {
-			
+			//internClasse.getClass().isInterface()
 			internClasse.setName(internCls.getSuperclass().getSimpleName());
 			internClasse.setModifier(getModifier());
 			internClasse.setInterfaces(getInterfaces());
