@@ -1,4 +1,4 @@
-package org.mql.java.introspection.models;
+package org.mql.java.models;
 
 public class Field {
 

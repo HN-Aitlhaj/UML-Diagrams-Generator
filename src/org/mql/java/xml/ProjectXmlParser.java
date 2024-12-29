@@ -3,7 +3,7 @@ package org.mql.java.xml;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.introspection.models.Package;
+import org.mql.java.models.Package;
 
 /*
  * DOM PARSER

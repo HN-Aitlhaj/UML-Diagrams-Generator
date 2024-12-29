@@ -1,10 +1,10 @@
-package org.mql.java.introspection.ui;
+package org.mql.java.ui;
 
 import org.mql.java.introspection.parser.ClassParser;
-import org.mql.java.introspection.models.Classe;
-import org.mql.java.introspection.models.Field;
-import org.mql.java.introspection.models.Method;
-import org.mql.java.introspection.models.Constructeur;
+import org.mql.java.models.Classe;
+import org.mql.java.models.Constructeur;
+import org.mql.java.models.Field;
+import org.mql.java.models.Method;
 
 import javax.swing.*;
 import javax.swing.text.*;

@@ -6,11 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.introspection.models.Classe;
-import org.mql.java.introspection.models.Constructeur;
-import org.mql.java.introspection.models.Field;
-import org.mql.java.introspection.models.Interface;
-import org.mql.java.introspection.models.Method;
+import org.mql.java.models.Classe;
+import org.mql.java.models.Constructeur;
+import org.mql.java.models.Field;
+import org.mql.java.models.Interface;
+import org.mql.java.models.Method;
 
 public class ClassParser {
 	

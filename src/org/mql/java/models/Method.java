@@ -1,22 +1,25 @@
-package org.mql.java.introspection.models;
+package org.mql.java.models;
 
 import java.util.List;
 import java.util.Vector;
 
-public class Constructeur {
+public class Method {
 	
 	private String name;
 	private String modifier;
+	private String returnType;
 	private List<Class<?>> parameterTypes;
 
-	public Constructeur() {
-		parameterTypes = new Vector<>();
+	public Method() {
+		super();
+		parameterTypes = new Vector<Class<?>>();
 	}
 
-	public Constructeur(String name, String modifier, List<Class<?>> parameterTypes) {
+	public Method(String name, String modifier, String returnType, List<Class<?>> parameterTypes) {
 		super();
 		this.name = name;
 		this.modifier = modifier;
+		this.returnType = returnType;
 		this.parameterTypes = parameterTypes;
 	}
 
@@ -36,6 +39,14 @@ public class Constructeur {
 		this.modifier = modifier;
 	}
 
+	public String getReturnType() {
+		return returnType;
+	}
+
+	public void setReturnType(String returnType) {
+		this.returnType = returnType;
+	}
+
 	public List<Class<?>> getParameterTypes() {
 		return parameterTypes;
 	}
@@ -46,7 +57,9 @@ public class Constructeur {
 
 	@Override
 	public String toString() {
-		return "Constructeur [name=" + name + ", modifier=" + modifier + ", parameterTypes=" + parameterTypes + "]";
+		return "Method [name=" + name + ", modifier=" + modifier + ", returnType=" + returnType + ", parameterTypes="
+				+ parameterTypes + "]";
 	}
+	
 
 }

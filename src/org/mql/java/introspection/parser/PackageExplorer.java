@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.introspection.models.Classe;
-import org.mql.java.introspection.models.Package;
+import org.mql.java.models.Classe;
+import org.mql.java.models.Package;
 
 public class PackageExplorer { //explorer le package  et l'anayser
 	

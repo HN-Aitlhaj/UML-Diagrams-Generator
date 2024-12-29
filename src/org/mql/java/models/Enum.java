@@ -1,4 +1,4 @@
-package org.mql.java.introspection.models;
+package org.mql.java.models;
 
 import java.util.List;
 import java.util.Vector;
