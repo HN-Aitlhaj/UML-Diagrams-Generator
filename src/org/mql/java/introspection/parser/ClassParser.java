@@ -1,7 +1,11 @@
 package org.mql.java.introspection.parser;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
@@ -16,14 +20,24 @@ public class ClassParser {
 	
 	private Class<?> cls;
 
-	public ClassParser(String className) { 
-		//File classFile = new File(className);
-		//Class<?> cls = classFile.getClass();
+	@SuppressWarnings("resource")
+	public ClassParser(String classPath) { 
+	
 		try {
-			this.cls = Class.forName(className);
-		} catch (ClassNotFoundException e) {
+//			this.cls = Class.forName(classPath);
+			
+//			 File file = new File(classPath); 
+//			 URL[] urls = {
+//	        		 file.toURI().toURL()
+//	        		 };
+//	         this.cls = new URLClassLoader(urls).loadClass(classPath);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Class<?> getCls(){
+		return cls;
 	}
 	
 	public Classe getClasse() {

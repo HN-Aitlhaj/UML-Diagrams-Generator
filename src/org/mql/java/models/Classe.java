@@ -102,7 +102,7 @@ public class Classe {
 
 	@Override
 	public String toString() {
-		return "Classe [name=" + name + ", modifier=" + modifier + ", superClass=" + superClass + ", interfaces="
+		return "\nClasse [name=" + name + ", modifier=" + modifier + ", superClass=" + superClass + ", interfaces="
 				+ interfaces + ", fields=" + fields + ", constructors=" + constructors + ", methods=" + methods
 				+ ", internClasses=" + internClasses + "]";
 	}

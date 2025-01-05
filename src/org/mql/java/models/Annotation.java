@@ -6,13 +6,13 @@ import java.util.Vector;
 public class Annotation {
 
 	String name;
-	List<Field> values;
+	List<Method> values;
 	
 	public Annotation() {
-		values = new Vector<Field>();
+		values = new Vector<Method>();
 	}
 
-	public Annotation(String name, List<Field> values) {
+	public Annotation(String name, List<Method> values) {
 		super();
 		this.name = name;
 		this.values = values;
@@ -26,11 +26,11 @@ public class Annotation {
 		this.name = name;
 	}
 
-	public List<Field> getValues() {
+	public List<Method> getValues() {
 		return values;
 	}
 
-	public void setValues(List<Field> values) {
+	public void setValues(List<Method> values) {
 		this.values = values;
 	}
 

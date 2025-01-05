@@ -3,6 +3,8 @@ package org.mql.java.models;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.introspection.parser.ClassParser;
+
 public class Package {
 	
 	private String name;
@@ -26,6 +28,18 @@ public class Package {
 		this.interfaces = interfaces;
 		this.enums = enums;
 		this.annotations = annotations;
+	}
+	
+	public Package(java.lang.Package pack) {
+		
+//		List.of(pack.getAnnotations()).stream()
+//		.map;
+		
+		
+		for(java.lang.annotation.Annotation ann : pack.getAnnotations()) {
+			ClassParser parser = new ClassParser(ann.annotationType().getName());
+			new Annotation(ann.annotationType().getName(),parser.getMethods());
+		}
 	}
 
 	public String getName() {
@@ -74,8 +88,8 @@ public class Package {
 
 	@Override
 	public String toString() {
-		return "Package [name=" + name + ", classes=" + classes + ", interfaces=" + interfaces + ", enums=" + enums
-				+ ", annotations=" + annotations + "]";
+		return "Package [name=" + name + ", classes=\n" + classes + ", interfaces=\n" + interfaces + ", enums=\n" + enums
+				+ ", annotations=\n" + annotations + "]";
 	}
 
 }
