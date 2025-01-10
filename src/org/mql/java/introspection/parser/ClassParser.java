@@ -1,9 +1,9 @@
 package org.mql.java.introspection.parser;
 
+
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
@@ -20,20 +20,57 @@ public class ClassParser {
 	
 	private Class<?> cls;
 
-	@SuppressWarnings("resource")
-	public ClassParser(String classPath) { 
+	
+//	public ClassParser(String classPath) { 
+//	
+//		try {
+//			this.cls = Class.forName(classPath);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	public ClassParser(Class<?> cls) {
+		this.cls = cls;
+	}
+	
+	public ClassParser(File binDir,String className) {
+		 
+		 try {
+	            URL[] urls = new URL[]{binDir.toURI().toURL()};
+	            
+	            @SuppressWarnings("resource")
+				URLClassLoader classLoader = new URLClassLoader(urls);
+	   
+	            this.cls = classLoader.loadClass(className);
+	            
+	            System.out.println("Class loaded: " + cls.getName());
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	}
+   
+    
+	public ClassParser(String binPath,String className) {
 	
 		try {
-//			this.cls = Class.forName(classPath);
-			
-//			 File file = new File(classPath); 
-//			 URL[] urls = {
-//	        		 file.toURI().toURL()
-//	        		 };
-//	         this.cls = new URLClassLoader(urls).loadClass(classPath);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			if("".equals(binPath)) binPath = System.getProperty("java.class.path"); 
+            File classDir = new File(binPath);
+            URL[] urls = new URL[]{classDir.toURI().toURL()};
+            
+            @SuppressWarnings("resource")
+			URLClassLoader classLoader = new URLClassLoader(urls);
+   
+            this.cls = classLoader.loadClass(className);
+            
+            System.out.println("Class loaded: " + cls.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void setCls(Class<?> cls) {
+		this.cls = cls;
 	}
 	
 	public Class<?> getCls(){
@@ -42,7 +79,7 @@ public class ClassParser {
 	
 	public Classe getClasse() {
 		Classe classe = new Classe();
-		classe.setName(cls.getSimpleName());
+		classe.setName(cls.getName());
 		classe.setModifier(getModifier());
 		classe.setSuperClass(getSuperclass());
 		classe.setInterfaces(getInterfaces());
@@ -63,7 +100,7 @@ public class ClassParser {
 	public Classe getSuperclass(){
 		
 		Classe classe = new Classe();
-		String superClass = cls.getSuperclass() !=null ? cls.getSuperclass().getSimpleName() : null;
+		String superClass = cls.getSuperclass() !=null ? cls.getSuperclass().getName() : null;
 		classe.setName(superClass);
 		classe.setModifier(getModifier());
 		classe.setInterfaces(getInterfaces());
@@ -82,7 +119,7 @@ public class ClassParser {
 		if(classe.getInterfaces().length == 0) return interfaces;
 		for(Class<?> interfaceClass : classe.getInterfaces()) {
 			
-			interfaces.add(new Interface(interfaceClass.getSimpleName(),getInterfaces(interfaceClass),
+			interfaces.add(new Interface(interfaceClass.getName(),getInterfaces(interfaceClass),
 					getFields(interfaceClass),getMethods(interfaceClass)));
 		}
 		return interfaces;
@@ -134,7 +171,7 @@ public class ClassParser {
 		Classe internClasse = new Classe();
 		for(Class<?> internCls : cls.getDeclaredClasses()) {
 			//internClasse.getClass().isInterface()
-			internClasse.setName(internCls.getSuperclass().getSimpleName());
+			internClasse.setName(internCls.getSuperclass().getName());
 			internClasse.setModifier(getModifier());
 			internClasse.setInterfaces(getInterfaces());
 			internClasse.setConstructors(getConstructors());

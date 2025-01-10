@@ -1,4 +1,4 @@
-package org.mql.java.xml;
+package org.mql.java.introspection.xml;
 
 import java.util.List;
 import java.util.Vector;
@@ -32,18 +32,18 @@ public class XMLNode {//façade : objectif : parser toute en cachant la complexi
 				node = node.getNextSibling(); //permet de recuperer le frère à droite		
 			}
 		
-			System.out.println(node.getNodeName() + " : " + node.getNodeType());
+//			System.out.println(node.getNodeName() + " : " + node.getNodeType());
 			
 			
-			NodeList children = node.getChildNodes();
-			int n = children.getLength();
-			for (int i = 0; i < n; i++) {
-				Node child = children.item(i);
-				if(child.getNodeType() == Node.ELEMENT_NODE) {
-					System.out.println(" - " + child.getNodeName());
-					
-				}
-			}
+//			NodeList children = node.getChildNodes();
+//			int n = children.getLength();
+//			for (int i = 0; i < n; i++) {
+//				Node child = children.item(i);
+//				if(child.getNodeType() == Node.ELEMENT_NODE) {
+//					System.out.println(" - " + child.getNodeName());
+//					
+//				}
+//			}
 			
 			
 			//System.out.println(Node.ELEMENT_NODE);

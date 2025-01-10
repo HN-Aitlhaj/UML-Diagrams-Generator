@@ -1,1 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <name>MyJavaProject</name>
+    <packages>
+        <package>
+            <name>org.mql.java.reflection.ui</name>
+            <classes>
+                <classe>
+                	<name>Test</name>
+					<modifier></modifier>
+					<superClass></superClass>
+					<interfaces>
+						<interface></interface>
+					</interfaces>
+					<fields>
+						<field>
+							<name></name>
+							<type></type>
+							<modifier></modifier>
+						</field>
+					</fields>
+					
+					<constructeurs>
+						<constructeur>
+							<name>Test</name>
+							<modifier></modifier>
+							<parameterTypes>
+								<parameter></parameter>
+							</parameterTypes>
+						</constructeur>
+					</constructeurs>
+					
+					<methods>
+						<method>
+							<name></name>
+							<modifier></modifier>
+							<returnType></returnType>
+							<parameterTypes>
+								<parameter></parameter>
+							</parameterTypes>
+						</method>
+					</methods>
+					
+					<internClasses>
+						<classe></classe>
+					</internClasses>
+				</classe>
+            </classes>
+            <interfaces>
+            	<interface>
+					<name>Test</name>
+					<extendedInterfaces>
+						<interface></interface>
+					</extendedInterfaces>
+					<fields>
+						<field>
+							<name></name>
+							<type></type>
+							<modifier></modifier>
+						</field>
+					</fields>
+					<methods>
+						<method>
+							<name>testMethod</name>
+							<modifier></modifier>
+							<returnType></returnType>
+							<parameterTypes>
+								<parameter></parameter>
+							</parameterTypes>
+						</method>
+					</methods>
+				</interface>
+			</interfaces>
+			<enums>
+				<enum>
+					<name></name>
+					<values>
+						<value></value>
+					</values>
+				</enum>
+			</enums>
+			<annotations>
+				<name></name>
+				<values>
+					<name></name>
+					<returnType></returnType>
+				</values>
+			</annotations>
+        </package>
+        
+    </packages>
+</project>
+

@@ -39,6 +39,12 @@ public class Classe {
 	public String getName() {
 		return name;
 	}
+	
+	public String getSimpleName() {
+		//simpleName.substring(simpleName.lastIndexOf('.') + 1);
+		String[] n = name.split("\\.");
+		return n[n.length - 1];
+	}
 
 	public void setName(String name) {
 		this.name = name;

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ClassParserTest {
 	
-	ClassParser parser = new ClassParser("java.io.File");
+	ClassParser parser = new ClassParser("","java.io.File");
 
 	@Test
 	public List<Field> getFields() {

@@ -11,6 +11,8 @@ public class ProjectExplorer { //explorer le projet  et l'anayser
 
 	public ProjectExplorer() {
 		String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations";
+		//path = System.getProperty("java.class.path");
+		System.out.println(path);
 		
 		Project project = scan(path);
 		
@@ -24,9 +26,11 @@ public class ProjectExplorer { //explorer le projet  et l'anayser
 		PackageExplorer packageExplorer = new PackageExplorer();
 		Project project = new Project();
 		 
-		project.setName(Paths.get(path).toAbsolutePath().getFileName().toString());
-		path = path.endsWith("bin")||path.endsWith("src") ? path : path + "\\bin";
-		project.setPackages(packageExplorer.scan(path, "org.mql.java.reflection.annotations", new Vector<>()));
+		project.setName(Paths.get(path).toAbsolutePath().toString());
+
+		path = path.endsWith("src")? path : path.replace("src" ,"bin");
+		path = path.endsWith("bin")? path : path + "\\bin";
+		project.setPackages(packageExplorer.scan(path, "" ,new Vector<>()));
 		return project;
 	}
 	

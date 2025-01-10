@@ -14,30 +14,15 @@ import org.mql.java.models.Package;
 
 public class PackageExplorer { //explorer le package  et l'anayser
 	
-	public PackageExplorer() {
-//		packageObject = new Package();
+	public List<Package> scan(String binPath, String packageName, List<Package> packages) {
+		//String binPath = System.getProperty("java.class.path");
+		//System.out.println(binPath);
 		
-//		String classPath = System.getProperty("java.class.path");
-//		System.out.println(classPath + " : ");
-//		List<Package> packages = scan(classPath ,"org.mql.java",new Vector<Package>());
-//		
-//		System.out.println("\npackageObject : ");
-//		for(Package cls: packages) {
-//			System.out.println(cls);
-//		}
-	}
-	
-	public List<Package> scan(String classPath, String packageName, List<Package> packages) {
-		//String classPath = System.getProperty("java.class.path");
-		//System.out.println(classPath);
 		Package packageObject = new Package();
-		String packagePath = packageName.replace(".", "\\");
-		
-		
+		String packagePath = packageName.replace(".", File.separator);
 		packageObject.setName(packagePath);
 		
-		String path = classPath + "\\" + packagePath;
-		//autre solution : classe loader au lieu de class path
+		String path = binPath + File.separator + packagePath;
 		
 		File dir = new File(path);
 		File content[] = dir.listFiles();
@@ -49,43 +34,49 @@ public class PackageExplorer { //explorer le package  et l'anayser
 		
 		
 		for (int i = 0; i < content.length; i++) {
+			if(!content[i].getName().contains("$")) {
+				if(content[i].isDirectory() ) {
+					if(packageName == "")
+						scan(binPath,content[i].getName(),packages);
+					else
+						scan(binPath,packageName + "." +content[i].getName(),packages);
 						
-			if(content[i].isDirectory() ) {
-					scan(classPath,packageName + "." +content[i].getName(),packages);
-			
-			}else {
-				String className = packageName + "." + content[i].getName().replace(".class","");
-				ClassParser parser = new ClassParser(className);
-				Class<?> cls = parser.getCls();
-				
-				if(cls.isAnnotation()) {
-					
-					annotations.add(new Annotation(cls.getSimpleName(),parser.getMethods()));
-					
-				} else if(cls.isEnum()) {
-//					List<String> values1 = parser.getMethods().stream()
-//							.map(Method::getName)
-//							.collect(Collectors.toList());
-					List<String> values = parser.getFields().stream()
-							.map(Field::getName)
-							.collect(Collectors.toList());
-					enums.add(new Enum(cls.getName(),values));
-					
-				}else if(cls.isInterface()) {
-					interfaces.add(new Interface());
 				}else {
-					classes.add(parser.getClasse());
+					String className = packageName + "." + content[i].getName().replace(".class","");
+					
+					ClassParser parser = new ClassParser(binPath,className);
+					Class<?> cls = parser.getCls();
+					
+					if(cls.isAnnotation()) {
+						
+						annotations.add(new Annotation(cls.getSimpleName(),parser.getMethods()));
+						
+					} else if(cls.isEnum()) {
+	//					List<String> values1 = parser.getMethods().stream()
+	//							.map(Method::getName)
+	//							.collect(Collectors.toList());
+						List<String> values = parser.getFields().stream()
+								.map(Field::getName)
+								.collect(Collectors.toList());
+						enums.add(new Enum(cls.getName(),values));
+						
+					}else if(cls.isInterface()) {
+						interfaces.add(new Interface());
+					}else {
+						classes.add(parser.getClasse());
+					}
 				}
 			}
-				
-				
 		}
+		
 		if (!classes.isEmpty() || !annotations.isEmpty() || !enums.isEmpty() || !interfaces.isEmpty()) {
 			packageObject.setClasses(classes);
 			packageObject.setAnnotations(annotations);
 			packageObject.setEnums(enums);
 			packageObject.setInterfaces(interfaces);
-			packages.add(packageObject);}
+			packages.add(packageObject);
+		}
+		
 		return packages;
 	}
 }
