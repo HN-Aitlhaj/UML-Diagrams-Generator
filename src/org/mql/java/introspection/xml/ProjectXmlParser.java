@@ -3,6 +3,13 @@ package org.mql.java.introspection.xml;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.models.Annotation;
+import org.mql.java.models.Classe;
+import org.mql.java.models.Constructeur;
+import org.mql.java.models.Enum;
+import org.mql.java.models.Field;
+import org.mql.java.models.Interface;
+import org.mql.java.models.Method;
 import org.mql.java.models.Package;
 import org.mql.java.models.Project;
 
@@ -18,30 +25,121 @@ public class ProjectXmlParser {
 	public Project parse(String source){
 		Project proj = new Project();
 		List<Package> packages = new Vector<Package>();
-		XMLNode root = new XMLNode(source); //return project
-		XMLNode t[] = root.children(); //name - packages
-		System.out.println(t.length);
-		proj.setName(t[0].getValue());
+		
+		XMLNode root = new XMLNode(source);
+		XMLNode packageNodes[] = root.children();
+		System.out.println("nbr packages : " + packageNodes.length);
+		
+		//ClassParser parser = new ClassParser(); //needed in FieldType Class<?>
+		//try{ 
+		//Class.forName("java.lang." + "String");	ifit's wrapperclasse //java.util => hashTable and list	
+			
+		//}catch(Exception e) { e.printStackTrace(); }
+		
+		proj.setName(root.attribute("name"));
 
 		
-		for(XMLNode node : t[1].children()) { //foreach package => (t[1].children() = <packages>)
+		for(XMLNode packageNode : packageNodes) {
 			Package packge = new Package();
-//			XMLNode props[] = node.children();
-//			System.out.println(props[0].getValue());
+			packge.setName(packageNode.attribute("name"));
 			
-			String name = node.child("name").getValue();
-			packge.setName(name);
+			for (XMLNode classeNode : packageNode.child("classes").children()) {
+				Classe classe = new Classe();
+				classe.setName(classeNode.attribute("name"));
+				classe.setModifier(classeNode.attribute("modifier"));
+				classe.setSuperClass(new Classe());
+				classe.getSuperClass().setName(classeNode.child("superClass").getValue());
+				
+				List<Field> fields = new Vector<Field>();
+				for (XMLNode fieldNode : classeNode.child("fields").children()) {
+					Field field = new Field();
+					field.setName(fieldNode.attribute("name"));
+					fields.add(field);
+				}
+				classe.setFields(fields);
+				
+				List<Constructeur> constructors = new Vector<Constructeur>();
+				for (XMLNode constructorNode : classeNode.child("constructeurs").children()) {
+					Constructeur constructor = new Constructeur();
+					constructor.setName(constructorNode.attribute("name"));
+					constructors.add(constructor);
+				}
+				classe.setFields(fields);
+				
+				List<Method> methods = new Vector<Method>();
+				for (XMLNode methodNode : classeNode.child("methods").children()) {
+					Method method = new Method();
+					method.setName(methodNode.attribute("name"));
+					methods.add(method);
+				}
+				classe.setMethods(methods);
+				
+				List<Classe> internClasses = new Vector<Classe>();
+				for (XMLNode internClasseNode : classeNode.child("internClasses").children()) {
+					Classe internClasse = new Classe();
+					internClasse.setName(internClasseNode.attribute("name"));
+					internClasses.add(internClasse);
+				}
+				classe.setInternClasses(internClasses);
+				
+				packge.addClasse(classe);
+			}
 			
-//			proj.add(a);
-//			a.setName(node.child("name").getValue());
-/*			//a.setClasses(node.child("classe").getValue());
-			//a.setInterfaces(node.child("name").getValue());
+			for (XMLNode interfaceNode : packageNode.child("interfaces").children()) {
+				Interface interf = new Interface();
+				interf.setName(interfaceNode.attribute("name"));
+				for (XMLNode extInterf : interfaceNode.child("extendedInterfaces").children()) {
+					interf.getExtendedInterfaces().add(new Interface(extInterf.getValue(), null ,null, null));
+				}
+				
+				List<Field> fields = new Vector<Field>();
+				for (XMLNode fieldNode : interfaceNode.child("fields").children()) {
+					Field field = new Field();
+					field.setName(fieldNode.attribute("name"));
+					fields.add(field);
+				}
+				interf.setFields(fields);
+				
+				List<Method> methods = new Vector<Method>();
+				for (XMLNode methodNode : interfaceNode.child("methods").children()) {
+					Method method = new Method();
+					method.setName(methodNode.attribute("name"));
+					
+					for (XMLNode typeNode : methodNode.children()) {
+						String type= typeNode.getValue();
+						if("int".equals(type))
+							method.getParameterTypes().add(Class.forPrimitiveName(type));
+						else
+							try {
+								method.getParameterTypes().add(Class.forName(type));
+							} catch (ClassNotFoundException e) {
+								//e.printStackTrace();
+							}
+					}
+					methods.add(method);
+				}
+				interf.setMethods(methods);
+				packge.getInterfaces().add(interf);
+			}			
 			
-//			XMLNode date= node.child("");
-//			a.setBirthday(new Date(
-//					date.intAttribute("day"),date.intAttribute("month"),date.intAttribute("year")
-//					));
-*/	
+			for (XMLNode annotationNode : packageNode.child("annotations").children()) {
+				Annotation annotation = new Annotation();
+				annotation.setName(annotationNode.attribute("name"));
+				for (XMLNode value : annotationNode.children()) {
+					annotation.getValues().add(new Method(value.attribute("name"), null ,value.attribute("returnType"), null));
+				}
+				packge.getAnnotations().add(annotation);
+			}
+			
+			for (XMLNode enumNode : packageNode.child("enums").children()) {
+				Enum enumeration = new Enum();
+				enumeration.setName(enumNode.attribute("name"));
+				for (XMLNode value : enumNode.children()) {
+					enumeration.getValues().add(value.getValue());
+				}
+				packge.getEnums().add(enumeration);
+			}
+
 			packages.add(packge);
 		}
 		proj.setPackages(packages);

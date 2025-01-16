@@ -1,94 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project>
-    <name>MyJavaProject</name>
-    <packages>
-        <package>
-            <name>org.mql.java.reflection.ui</name>
-            <classes>
-                <classe>
-                	<name>Test</name>
-					<modifier></modifier>
-					<superClass></superClass>
-					<interfaces>
-						<interface></interface>
-					</interfaces>
-					<fields>
-						<field>
-							<name></name>
-							<type></type>
-							<modifier></modifier>
-						</field>
-					</fields>
+<project name="MyJavaProject" binPath="">
+	<package name="org.mql.java.reflection.ui">
+		<classes>
+			<classe name="Test" modifier="">
+				<superClass></superClass>
+				<interfaces>
+					<interface></interface>
+				</interfaces>
 					
-					<constructeurs>
-						<constructeur>
-							<name>Test</name>
-							<modifier></modifier>
-							<parameterTypes>
-								<parameter></parameter>
-							</parameterTypes>
-						</constructeur>
-					</constructeurs>
+				<fields>
+					<field name="field1" type="String" modifier="" />
+				</fields>
 					
-					<methods>
-						<method>
-							<name></name>
-							<modifier></modifier>
-							<returnType></returnType>
-							<parameterTypes>
-								<parameter></parameter>
-							</parameterTypes>
-						</method>
-					</methods>
-					
-					<internClasses>
-						<classe></classe>
-					</internClasses>
-				</classe>
-            </classes>
-            <interfaces>
-            	<interface>
-					<name>Test</name>
-					<extendedInterfaces>
-						<interface></interface>
-					</extendedInterfaces>
-					<fields>
-						<field>
-							<name></name>
-							<type></type>
-							<modifier></modifier>
-						</field>
-					</fields>
-					<methods>
-						<method>
-							<name>testMethod</name>
-							<modifier></modifier>
-							<returnType></returnType>
-							<parameterTypes>
-								<parameter></parameter>
-							</parameterTypes>
-						</method>
-					</methods>
-				</interface>
-			</interfaces>
-			<enums>
-				<enum>
-					<name></name>
-					<values>
-						<value></value>
-					</values>
-				</enum>
-			</enums>
-			<annotations>
-				<name></name>
-				<values>
-					<name></name>
-					<returnType></returnType>
-				</values>
-			</annotations>
-        </package>
-        
-    </packages>
+				<constructeurs>
+					<constructeur name="Test" modifier="">
+						<parameterType>String</parameterType>
+					</constructeur>
+				</constructeurs>
+			
+				<methods>
+					<method name="" modifier="" returnType="">
+						<parameterType>String</parameterType>
+						<parameterType>int</parameterType>
+					</method>
+				</methods>
+				<internClasses>
+					<classe></classe>
+				</internClasses>
+			</classe>
+		</classes>
+            
+		<interfaces>
+			<interface name="Test">
+				<extendedInterfaces>
+					<interface>interfaceExample</interface>
+				</extendedInterfaces>
+				<fields>
+					<field name="" type="" modifier="" />
+					<field name="" type="" modifier="" />
+				</fields>
+				<methods>
+					<method name="methodTest" modifier="" returnType="">
+						<parameterType>int</parameterType>
+						<parameterType>java.lang.String</parameterType>
+					</method>
+				</methods>
+			</interface>
+		</interfaces>
+			
+		<enums>
+			<enum name="enum1">
+				<value>BLACK</value>
+				<value>BLUE</value>
+			</enum>
+		</enums>
+			
+		<annotations>
+			<annotation name="annot1">
+				<value name="value" returnType="String"/>
+				<value name="source" returnType="String"/>
+			</annotation>
+		</annotations>		
+	</package>
 </project>
 

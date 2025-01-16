@@ -58,7 +58,8 @@ public class ClasseLoaderTest {
             URL[] urls = new URL[]{classDir.toURI().toURL()};
             
             // Create a new class loader with the directory
-            URLClassLoader classLoader = new URLClassLoader(urls);
+            @SuppressWarnings("resource")
+			URLClassLoader classLoader = new URLClassLoader(urls);
             
             // Fully qualified class name
             String className = "org.mql.java.reflection.ui.Form";

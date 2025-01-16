@@ -18,7 +18,9 @@ public class Project {
 		this.packages = packages;
 	}
 
-
+	public void addPackage(Package pack) {
+		packages.add(pack);
+	}
 
 	public String getName() {
 		return name;

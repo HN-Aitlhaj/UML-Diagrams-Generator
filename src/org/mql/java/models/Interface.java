@@ -31,7 +31,7 @@ public class Interface {
 	}
 
 	public String getSimpleName() {
-		//simpleName.substring(simpleName.lastIndexOf('.') + 1);
+//		return name.substring(name.lastIndexOf('.') + 1);
 		String[] n = name.split("\\.");
 		return n[n.length - 1];
 	}

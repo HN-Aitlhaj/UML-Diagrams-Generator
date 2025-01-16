@@ -34,7 +34,7 @@ public class PackageExplorer { //explorer le package  et l'anayser
 		
 		
 		for (int i = 0; i < content.length; i++) {
-			if(!content[i].getName().contains("$")) {
+			if(!content[i].getName().contains("\\$")) {
 				if(content[i].isDirectory() ) {
 					if(packageName == "")
 						scan(binPath,content[i].getName(),packages);

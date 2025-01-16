@@ -11,7 +11,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class XMLNode {//façade : objectif : parser toute en cachant la complexité
+public class XMLNode {
 	private Node node;
 	
 	public XMLNode(Node node) {
@@ -20,35 +20,15 @@ public class XMLNode {//façade : objectif : parser toute en cachant la complexi
 	}
 	
 	public XMLNode(String source) {
-		//Factory abstract builder : design patterns en semestre 2
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
 
 		try {
-			DocumentBuilder builder =  factory.newDocumentBuilder(); //factory : bin - newDocumentBuilder() : method
+			DocumentBuilder builder =  factory.newDocumentBuilder();
 			Document document = builder.parse(source);
-			node = document.getFirstChild(); //il y a diff entre root et rootElement //il detecte auusi coments
-			//elment est un cas particulier ds neuds
+			node = document.getFirstChild();
 			while(node.getNodeType() != Node.ELEMENT_NODE) {
-				node = node.getNextSibling(); //permet de recuperer le frère à droite		
+				node = node.getNextSibling();	
 			}
-		
-//			System.out.println(node.getNodeName() + " : " + node.getNodeType());
-			
-			
-//			NodeList children = node.getChildNodes();
-//			int n = children.getLength();
-//			for (int i = 0; i < n; i++) {
-//				Node child = children.item(i);
-//				if(child.getNodeType() == Node.ELEMENT_NODE) {
-//					System.out.println(" - " + child.getNodeName());
-//					
-//				}
-//			}
-			
-			
-			//System.out.println(Node.ELEMENT_NODE);
-			//System.out.println(Node.COMMENT_NODE);
-			//node name - node value(ne marche pas pour tous (marche sur textuel) ) - node type
 			
 			
 		}catch (Exception e) {
@@ -91,7 +71,6 @@ public class XMLNode {//façade : objectif : parser toute en cachant la complexi
 	}
 	
 	public String getValue() {
-		//on peut récupérer la valeur de noeud seulment si na pas de fils et sa valeur est textuel
 		NodeList list = node.getChildNodes();
 		if(list.getLength() == 1 && list.item(0).getNodeType() == Node.TEXT_NODE) {
 			return list.item(0).getNodeValue();
@@ -103,7 +82,6 @@ public class XMLNode {//façade : objectif : parser toute en cachant la complexi
 	public String attribute(String name) {
 		NamedNodeMap atts = node.getAttributes();
 		return atts.getNamedItem(name) != null ? atts.getNamedItem(name).getNodeValue() : null;
-		//Optionnal dans java.util : peut etre au lieu de null
 	}
 
 	public int intAttribute(String name) {
