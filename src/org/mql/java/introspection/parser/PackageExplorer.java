@@ -20,7 +20,7 @@ public class PackageExplorer { //explorer le package  et l'anayser
 		
 		Package packageObject = new Package();
 		String packagePath = packageName.replace(".", File.separator);
-		packageObject.setName(packagePath);
+		packageObject.setName(packageName);
 		
 		String path = binPath + File.separator + packagePath;
 		

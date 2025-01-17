@@ -63,7 +63,7 @@ public class ClassParser {
    
             this.cls = classLoader.loadClass(className);
             
-            System.out.println("Class loaded: " + cls.getName());
+            //System.out.println("Class loaded: " + cls.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }
