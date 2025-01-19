@@ -4,13 +4,13 @@ public class Field {
 
 	private String name;
 	private Class<?> type;
-	private String modifier;
+	private Modifier modifier;
 	
 	public Field() {
 		super();
 	}
 
-	public Field(String name, Class<?> type, String modifier) {
+	public Field(String name, Class<?> type, Modifier modifier) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -33,11 +33,11 @@ public class Field {
 		this.type = type;
 	}
 
-	public String getModifier() {
+	public Modifier getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(String modifer) {
+	public void setModifier(Modifier modifer) {
 		this.modifier = modifer;
 	}
 

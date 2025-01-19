@@ -12,11 +12,10 @@ import org.mql.java.models.Interface;
 import org.mql.java.models.Classe;
 import org.mql.java.models.Package;
 
-public class PackageExplorer { //explorer le package  et l'anayser
+public class PackageExplorer {
 	
-	public List<Package> scan(String binPath, String packageName, List<Package> packages) {
-		//String binPath = System.getProperty("java.class.path");
-		//System.out.println(binPath);
+	public static List<Package> scan(String binPath, String packageName, List<Package> packages) {
+		
 		
 		Package packageObject = new Package();
 		String packagePath = packageName.replace(".", File.separator);
@@ -34,7 +33,7 @@ public class PackageExplorer { //explorer le package  et l'anayser
 		
 		
 		for (int i = 0; i < content.length; i++) {
-			if(!content[i].getName().contains("\\$")) {
+			if(!content[i].getName().contains("$")) {
 				if(content[i].isDirectory() ) {
 					if(packageName == "")
 						scan(binPath,content[i].getName(),packages);
@@ -61,7 +60,7 @@ public class PackageExplorer { //explorer le package  et l'anayser
 						enums.add(new Enum(cls.getName(),values));
 						
 					}else if(cls.isInterface()) {
-						interfaces.add(new Interface());
+						interfaces.add(new Interface(className, parser.getInterfaces(), parser.getFields(), parser.getMethods()));
 					}else {
 						classes.add(parser.getClasse());
 					}

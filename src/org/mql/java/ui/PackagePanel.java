@@ -27,7 +27,7 @@ public class PackagePanel extends JPanel {
         setBorder( new TitledBorder( new LineBorder(Color.cyan, 2, true),title));
         
 
-        //new ComponentMover(frame, this);
+        new ComponentMover(frame, this);
 	}
 	
 	

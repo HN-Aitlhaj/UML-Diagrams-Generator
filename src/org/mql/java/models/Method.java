@@ -6,7 +6,7 @@ import java.util.Vector;
 public class Method {
 	
 	private String name;
-	private String modifier;
+	private Modifier modifier;
 	private String returnType;
 	private List<Class<?>> parameterTypes;
 
@@ -15,7 +15,7 @@ public class Method {
 		parameterTypes = new Vector<Class<?>>();
 	}
 
-	public Method(String name, String modifier, String returnType, List<Class<?>> parameterTypes) {
+	public Method(String name, Modifier modifier, String returnType, List<Class<?>> parameterTypes) {
 		super();
 		this.name = name;
 		this.modifier = modifier;
@@ -31,11 +31,11 @@ public class Method {
 		this.name = name;
 	}
 
-	public String getModifier() {
+	public Modifier getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(String modifier) {
+	public void setModifier(Modifier modifier) {
 		this.modifier = modifier;
 	}
 

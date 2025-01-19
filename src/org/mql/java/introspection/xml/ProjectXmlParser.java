@@ -10,6 +10,7 @@ import org.mql.java.models.Enum;
 import org.mql.java.models.Field;
 import org.mql.java.models.Interface;
 import org.mql.java.models.Method;
+import org.mql.java.models.Modifier;
 import org.mql.java.models.Package;
 import org.mql.java.models.Project;
 
@@ -46,7 +47,7 @@ public class ProjectXmlParser {
 			for (XMLNode classeNode : packageNode.child("classes").children()) {
 				Classe classe = new Classe();
 				classe.setName(classeNode.attribute("name"));
-				classe.setModifier(classeNode.attribute("modifier"));
+				classe.setModifier(new Modifier(classeNode.attribute("modifier") ));
 				classe.setSuperClass(new Classe());
 				classe.getSuperClass().setName(classeNode.child("superClass").getValue());
 				

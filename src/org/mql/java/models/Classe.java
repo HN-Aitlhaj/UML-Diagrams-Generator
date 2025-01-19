@@ -3,10 +3,13 @@ package org.mql.java.models;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.annotations.Entity;
+
+@Entity(type="Classe")
 public class Classe {
 	
 	private String name;
-	private String modifier;
+	private Modifier modifier;
 	private Classe superClass;
 	private List<Interface> interfaces;
 	private List<Field> fields;
@@ -23,7 +26,7 @@ public class Classe {
 		internClasses = new Vector<Classe>();
 	}
 
-	public Classe(String name, String modifier, Classe superClass, List<Interface> interfaces, List<Field> fields,
+	public Classe(String name, Modifier modifier, Classe superClass, List<Interface> interfaces, List<Field> fields,
 			List<Constructeur> constructors, List<Method> methods, List<Classe> internClasses) {
 		super();
 		this.name = name;
@@ -50,11 +53,11 @@ public class Classe {
 		this.name = name;
 	}
 
-	public String getModifier() {
+	public Modifier getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(String modifier) {
+	public void setModifier(Modifier modifier) {
 		this.modifier = modifier;
 	}
 

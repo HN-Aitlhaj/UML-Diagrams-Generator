@@ -14,8 +14,7 @@ class ProjectExplorerTest {
 		String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations\\bin";
 		//path = System.getProperty("java.class.path");
 		System.out.println(path);
-		ProjectExplorer projExplorer = new ProjectExplorer();
-		Project project = projExplorer.scan(path);
+		Project project = ProjectExplorer.scan(path);
 		
 		System.out.println("\nProject : " + project.getName());
 		for(Package packge: project.getPackages()) {

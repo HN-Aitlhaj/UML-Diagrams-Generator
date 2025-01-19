@@ -6,14 +6,14 @@ import java.util.Vector;
 public class Constructeur {
 	
 	private String name;
-	private String modifier;
+	private Modifier modifier;
 	private List<Class<?>> parameterTypes;
 
 	public Constructeur() {
 		parameterTypes = new Vector<>();
 	}
 
-	public Constructeur(String name, String modifier, List<Class<?>> parameterTypes) {
+	public Constructeur(String name, Modifier modifier, List<Class<?>> parameterTypes) {
 		super();
 		this.name = name;
 		this.modifier = modifier;
@@ -28,11 +28,11 @@ public class Constructeur {
 		this.name = name;
 	}
 
-	public String getModifier() {
+	public Modifier getModifier() {
 		return modifier;
 	}
 
-	public void setModifier(String modifier) {
+	public void setModifier(Modifier modifier) {
 		this.modifier = modifier;
 	}
 

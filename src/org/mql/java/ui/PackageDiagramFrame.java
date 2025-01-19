@@ -29,8 +29,9 @@ public class PackageDiagramFrame extends JFrame {
     }
 
     private void generatePackages() {
-
-        for (Package packge : test().getPackages()) {
+    	Project proj = test();
+    	if(proj != null)
+        for (Package packge : proj.getPackages()) {
             PackagePanel pac = new PackagePanel(packge.getName());
             add(pac);
 
@@ -43,8 +44,7 @@ public class PackageDiagramFrame extends JFrame {
     private Project test() {
         String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations\\bin";
 
-        ProjectExplorer projExplorer = new ProjectExplorer();
-        return projExplorer.scan(path); // Return scanned project
+        return ProjectExplorer.scan(path); // Return scanned project
     }
 
     public static void main(String[] args) {

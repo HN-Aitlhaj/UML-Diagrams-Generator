@@ -7,19 +7,17 @@ import org.mql.java.models.Project;
 
 public class ProjectExplorer {
 	
-	public ProjectExplorer() {
-	}
-	
-	public Project scan(String path) {
-		PackageExplorer packageExplorer = new PackageExplorer();
+	public static Project scan(String path) {
 		
 		path = path.endsWith("src")? path : path.replace("src" ,"bin");
 		path = path.endsWith("bin")? path : path + "\\bin";
 		
 		Project project = new Project();
 		project.setName(Paths.get(path).getParent().getFileName().toString());
-
-		project.setPackages(packageExplorer.scan(path, "" ,new Vector<>()));
+		project.setBinPath(path);
+		project.setPackages(PackageExplorer.scan(path, "" ,new Vector<>()));
+		//StringMapper()
+		//project.setRelations(new Vector<>());
 		return project;
 	}
 

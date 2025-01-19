@@ -3,6 +3,9 @@ package org.mql.java.models;
 import java.util.List;
 import java.util.Vector;
 
+import org.mql.java.annotations.Entity;
+
+@Entity(type="Enum")
 public class Enum {
 
 	String name;

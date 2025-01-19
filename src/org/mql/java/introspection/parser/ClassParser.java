@@ -3,7 +3,6 @@ package org.mql.java.introspection.parser;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
@@ -15,6 +14,7 @@ import org.mql.java.models.Constructeur;
 import org.mql.java.models.Field;
 import org.mql.java.models.Interface;
 import org.mql.java.models.Method;
+import org.mql.java.models.Modifier;
 
 public class ClassParser {
 	
@@ -89,12 +89,13 @@ public class ClassParser {
 		return classe;
 	}
 	
-	public String getModifier() {
+	public Modifier getModifier() {
 		return getModifier(cls.getModifiers());
 	}
 	
-	private String getModifier(int modifier) {
-		return Modifier.toString(modifier);
+	private Modifier getModifier(int modifier) {
+		Modifier mod = new Modifier(java.lang.reflect.Modifier.toString(modifier));
+		return mod;
 	}
 	
 	public Classe getSuperclass(){
@@ -131,7 +132,7 @@ public class ClassParser {
 		
 		List<Constructeur> constructeurs = new Vector<Constructeur>();
 		for(Constructor<?> construct : consts ) {
-			constructeurs.add(new Constructeur(construct.getName(),Modifier.toString(construct.getModifiers()), 
+			constructeurs.add(new Constructeur(construct.getName(),getModifier(construct.getModifiers()), 
 					Arrays.asList( construct.getParameterTypes() )));
 		}
 		return constructeurs;
