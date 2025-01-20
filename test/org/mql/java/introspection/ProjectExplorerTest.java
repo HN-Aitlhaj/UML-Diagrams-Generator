@@ -3,9 +3,9 @@ package org.mql.java.introspection;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.mql.java.introspection.parser.ProjectExplorer;
-import org.mql.java.models.Package;
-import org.mql.java.models.Project;
+import org.mql.java.uml.introspection.services.ProjectExplorer;
+import org.mql.java.uml.models.Package;
+import org.mql.java.uml.models.Project;
 
 class ProjectExplorerTest {
 

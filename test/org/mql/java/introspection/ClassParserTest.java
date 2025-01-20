@@ -2,9 +2,9 @@ package org.mql.java.introspection;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mql.java.introspection.parser.ClassParser;
-import org.mql.java.models.Field;
-import org.mql.java.models.Interface;
+import org.mql.java.uml.introspection.services.ClassParser;
+import org.mql.java.uml.models.Field;
+import org.mql.java.uml.models.Interface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
