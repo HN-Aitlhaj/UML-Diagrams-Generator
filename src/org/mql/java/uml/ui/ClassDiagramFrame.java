@@ -2,6 +2,11 @@ package org.mql.java.uml.ui;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import javax.swing.JFrame;
 
@@ -16,18 +21,25 @@ import org.mql.java.uml.models.Project;
 public class ClassDiagramFrame extends JFrame {
     
     private static final long serialVersionUID = 1L;
+    
+    HashMap<EntityPanel<?>, Dimension> position;
 
     public ClassDiagramFrame(String path) {
+        setContentPane(new RelationPanel(300, 300, 300, 300));
         userInterface();
         generateDiagram(path);
     }
 
     private void userInterface() {
-        setSize(1000, 700);
+        setSize(1000, 700); 
         setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        
+        
+       
+        
         
     }
 
@@ -36,9 +48,12 @@ public class ClassDiagramFrame extends JFrame {
     	if(proj != null)
         for (Package packge : proj.getPackages()) {
         	
-            for (Classe classe : packge.getClasses())
+            for (Classe classe : packge.getClasses()) {
+            	EntityPanel<Classe> e = new EntityPanel<>(classe); 
+            	e.getX(); e.getY();
             	add(new EntityPanel<>(classe));
-            
+            	add(new RelationPanel(300, 300, 300, 300));				///
+            }
             for (Interface interf : packge.getInterfaces())
             	add(new EntityPanel<Interface>(interf));
 			
@@ -59,10 +74,10 @@ public class ClassDiagramFrame extends JFrame {
 
         return ProjectExplorer.scan(path); // Return scanned project
     }
-//
-//    public static void main(String[] args) {
-//        new ClassDiagramFrame();
-//    }
+
+    public static void main(String[] args) {
+        new ClassDiagramFrame("");
+    }
 
     @Override
     public Dimension getPreferredSize() {

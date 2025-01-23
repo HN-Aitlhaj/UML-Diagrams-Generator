@@ -3,15 +3,14 @@ package org.mql.java.uml.models;
 import java.util.List;
 import java.util.Vector;
 
-public class Interface {
+public class Interface extends Entity {
 	
-	private String name;
 	private List<Interface> extendedInterfaces;
 	private List<Field> fields;
 	private List<Method> methods;
 	
 	public Interface() {
-		
+		super();
 		extendedInterfaces = new Vector<Interface>();
 		fields = new Vector<Field>();
 		methods = new Vector<Method>();
@@ -19,27 +18,11 @@ public class Interface {
 
 
 	public Interface(String name, List<Interface> extendedInterfaces, List<Field> fields, List<Method> methods) {
-		super();
-		this.name = name;
+		super(name);
 		this.extendedInterfaces = extendedInterfaces;
 		this.fields = fields;
 		this.methods = methods;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSimpleName() {
-//		return name.substring(name.lastIndexOf('.') + 1);
-		String[] n = name.split("\\.");
-		return n[n.length - 1];
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 
 	public List<Interface> getExtendedInterfaces() {
 		return extendedInterfaces;

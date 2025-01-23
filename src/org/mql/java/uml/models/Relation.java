@@ -6,8 +6,8 @@ import org.mql.java.uml.enums.RelationType;
 public class Relation {
 
 	private RelationType type;
-	private Class<?> sourceClass;
-	private Class<?> destinationClass ;
+	private Entity sourceClass;
+	private Entity destinationClass;
 	private Multiplicity sourceMultiplicity;
 	private Multiplicity destinationMultiplicity;
 	
@@ -15,7 +15,7 @@ public class Relation {
 		super();
 	}
 
-	public Relation(RelationType type, Class<?> sourceClass, Class<?> destinationClass, Multiplicity sourceMultiplicity,
+	public Relation(RelationType type, Entity sourceClass, Entity destinationClass, Multiplicity sourceMultiplicity,
 			Multiplicity destinationMultiplicity) {
 		super();
 		this.type = type;
@@ -33,19 +33,19 @@ public class Relation {
 		this.type = type;
 	}
 
-	public Class<?> getSouceClass() {
+	public Entity getSouceClass() {
 		return sourceClass;
 	}
 
-	public void setSouceClass(Class<?> sourceClass) {
+	public void setSouceClass(Entity sourceClass) {
 		this.sourceClass = sourceClass;
 	}
 
-	public Class<?> getDestinationClass() {
+	public Entity getDestinationClass() {
 		return destinationClass;
 	}
 
-	public void setDestinationClass(Class<?> destinationClass) {
+	public void setDestinationClass(Entity destinationClass) {
 		this.destinationClass = destinationClass;
 	}
 

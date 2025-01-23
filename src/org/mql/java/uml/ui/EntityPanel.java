@@ -21,20 +21,21 @@ import org.mql.java.uml.enums.Visibility;
 import org.mql.java.uml.models.Annotation;
 import org.mql.java.uml.models.Classe;
 import org.mql.java.uml.models.Constructeur;
+import org.mql.java.uml.models.Entity;
 import org.mql.java.uml.models.Enum;
 import org.mql.java.uml.models.Field;
 import org.mql.java.uml.models.Interface;
 import org.mql.java.uml.models.Method;
 import org.mql.java.uml.ui.tools.ComponentMover;
 
-public class EntityPanel<T> extends JPanel {
+public class EntityPanel<T extends Entity> extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private T entity;
 	
 	public EntityPanel(T entity) {
 		this.entity = entity;
-		
+		this.getX();
 		JFrame frame = (JFrame) SwingUtilities.windowForComponent(this);
         //setPreferredSize(new Dimension(200,200));
 

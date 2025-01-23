@@ -1,6 +1,7 @@
 package org.mql.java.uml.models;
 
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -9,14 +10,14 @@ public class Project {
 	private String name;
 	private String binPath;
 	private List<Package> packages;
-	private List<Relation> relations;
+	private HashMap<String,List<Relation>> relations;
 	
 	public Project() {
 		packages = new Vector<Package>();
-		relations = new Vector<Relation>();
+		relations = new HashMap<String, List<Relation>>();
 	}
 	
-	public Project(String name, String binPath, List<Package> packages,List<Relation> relations) {
+	public Project(String name, String binPath, List<Package> packages,HashMap<String, List<Relation>> relations) {
 		super();
 		this.name = name;
 		this.binPath = binPath;
@@ -53,11 +54,11 @@ public class Project {
 		this.packages = packages;
 	}
 
-	public List<Relation> getRelations() {
+	public HashMap<String, List<Relation>> getRelations() {
 		return relations;
 	}
 
-	public void setRelations(List<Relation> relations) {
+	public void setRelations(HashMap<String, List<Relation>> relations) {
 		this.relations = relations;
 	}
 
