@@ -8,9 +8,13 @@ import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
+import org.mql.java.uml.models.Annotation;
 import org.mql.java.uml.models.Classe;
 import org.mql.java.uml.models.Constructeur;
+import org.mql.java.uml.models.Entity;
+import org.mql.java.uml.models.Enum;
 import org.mql.java.uml.models.Field;
 import org.mql.java.uml.models.Interface;
 import org.mql.java.uml.models.Method;
@@ -77,16 +81,34 @@ public class ClassParser {
 		return cls;
 	}
 	
-	public Classe getClasse() {
-		Classe classe = new Classe();
-		classe.setName(cls.getName());
-		classe.setModifier(getModifier());
-		classe.setSuperClass(getSuperclass());
-		classe.setInterfaces(getInterfaces());
-		classe.setConstructors(getConstructors());
-		classe.setMethods(getMethods());
-		classe.setInternClasses(getInternClasses());
-		return classe;
+	public Entity getEntity() {
+		if(cls.isAnnotation()) {
+			Annotation annotation = new Annotation();
+			annotation.setName(cls.getName());
+			annotation.setValues(getMethods());
+			return annotation;
+		} else if(cls.isEnum()) {
+			Enum enumeration = new Enum();
+			List<String> values = getFields().stream()
+					.map(Field::getName)
+					.collect(Collectors.toList());
+			enumeration = new Enum(cls.getName(),values);
+			return enumeration;
+		}else if(cls.isInterface()) {
+			Interface interf = new Interface();
+			interf = new Interface(cls.getName(), getInterfaces(), getFields(), getMethods());
+			return interf;
+		}else {
+			Classe classe = new Classe();
+			classe.setName(cls.getName());
+			classe.setModifier(getModifier());
+			classe.setSuperClass(getSuperclass());
+			classe.setInterfaces(getInterfaces());
+			classe.setConstructors(getConstructors());
+			classe.setMethods(getMethods());
+			classe.setInternClasses(getInternClasses());
+			return classe;
+		}
 	}
 	
 	public Modifier getModifier() {
@@ -172,7 +194,7 @@ public class ClassParser {
 		Classe internClasse = new Classe();
 		for(Class<?> internCls : cls.getDeclaredClasses()) {
 			//internClasse.getClass().isInterface()
-			internClasse.setName(internCls.getSuperclass().getName());
+			internClasse.setName(internCls.getName());
 			internClasse.setModifier(getModifier());
 			internClasse.setInterfaces(getInterfaces());
 			internClasse.setConstructors(getConstructors());

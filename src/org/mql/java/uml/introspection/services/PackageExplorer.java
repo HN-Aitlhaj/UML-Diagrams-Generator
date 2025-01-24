@@ -48,7 +48,7 @@ public class PackageExplorer {
 					
 					if(cls.isAnnotation()) {
 						
-						annotations.add(new Annotation(cls.getSimpleName(),parser.getMethods()));
+						annotations.add(new Annotation(cls.getName(),parser.getMethods()));
 						
 					} else if(cls.isEnum()) {
 						List<String> values = parser.getFields().stream()
@@ -59,7 +59,7 @@ public class PackageExplorer {
 					}else if(cls.isInterface()) {
 						interfaces.add(new Interface(className, parser.getInterfaces(), parser.getFields(), parser.getMethods()));
 					}else {
-						classes.add(parser.getClasse());
+						classes.add((Classe) parser.getEntity());
 					}
 				}
 			}

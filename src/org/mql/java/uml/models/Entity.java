@@ -12,6 +12,13 @@ public class Entity {
 		super();
 		this.name = name;
 	}
+	@Override
+	public boolean equals(Object obj) {
+			if(getName().equals(((Entity)obj).getName()))
+				return true;
+		
+		return super.equals(obj);
+	}
 
 	public String getName() {
 		return name;
@@ -27,9 +34,19 @@ public class Entity {
 		this.name = name;
 	}
 
+	public String getPackageName() {
+		if(name.isEmpty() || name.lastIndexOf('.') < 0)
+			return "";
+		else return name.substring(0, name.lastIndexOf('.') );
+	}
+	
 	@Override
 	public String toString() {
 		return "Entity [name=" + name + "]";
+	}
+	
+	public static void main(String[] args) {
+		new Entity();
 	}
 	
 }

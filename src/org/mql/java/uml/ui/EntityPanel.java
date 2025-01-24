@@ -2,6 +2,7 @@ package org.mql.java.uml.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,10 +33,20 @@ public class EntityPanel<T extends Entity> extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private T entity;
+	private Dimension dimension;
+	private Point position;
+
 	
+	public EntityPanel() {
+		super();
+		this.dimension = new Dimension(getWidth(),getHeight());
+		//getLocation();
+		this.position = new Point(getX(),getY());
+	}
+
 	public EntityPanel(T entity) {
 		this.entity = entity;
-		this.getX();
+		
 		JFrame frame = (JFrame) SwingUtilities.windowForComponent(this);
         //setPreferredSize(new Dimension(200,200));
 
@@ -43,26 +54,24 @@ public class EntityPanel<T extends Entity> extends JPanel {
         JTextPane fieldPane = new JTextPane();
         
 		
-		String title ="";
+		String title = entity.getSimpleName();
         if(entity.getClass().equals(Interface.class)) {
         	Interface interf = ((Interface)entity);
-        	title = interf.getSimpleName();
+        	
         	fieldPane = getFieldsPane(interf.getFields());
         	methodPane = getMethodsPane(interf.getMethods(),null);
         	        	
         }else if(entity.getClass().equals(Enum.class)) {
         	Enum enumeration = ((Enum)entity);
-        	title = enumeration.getSimpleName();
         	fieldPane = getValuesPane(enumeration.getValues());
         	
         }else if(entity.getClass().equals(Annotation.class)) {
         	Annotation annotation = ((Annotation)entity);
-        	title = annotation.getName();
+        	
         	methodPane = getMethodsPane(annotation.getValues(),null);
         
         }else if(entity.getClass().equals(Classe.class)) {
         	Classe classe = ((Classe)entity);
-        	title = classe.getSimpleName();
         	fieldPane = getFieldsPane(classe.getFields());
         	methodPane = getMethodsPane(classe.getMethods(),classe.getConstructors());
         	//modifier + internClasses
@@ -78,6 +87,14 @@ public class EntityPanel<T extends Entity> extends JPanel {
         
         fieldPane.setBorder(new LineBorder(Color.decode("#87ceeb"), 1));
         methodPane.setBorder(new LineBorder(Color.decode("#87ceeb"), 1));
+        
+        titlePane.setEnabled(false);
+        fieldPane.setEnabled(false);
+        methodPane.setEnabled(false);
+        
+        titlePane.setDisabledTextColor(Color.black);
+        fieldPane.setDisabledTextColor(Color.black);
+        methodPane.setDisabledTextColor(Color.black);
         
         add(titlePane);
         add(fieldPane);
@@ -133,8 +150,11 @@ public class EntityPanel<T extends Entity> extends JPanel {
         		List<Class<?>> types = constructeur.getParameterTypes();
                 appendText(methodPane, doc, "  ", 10, Color.BLACK, false);
                 appendText(methodPane, doc, getVisibilitySign(constructeur.getModifier().getAccess()) 
-                		+ " " + (modifier.length != 0 ? Arrays.toString(modifier) : "") + " ", 10, Color.BLACK, false);
-                appendText(methodPane, doc, "Constructor(" + (types.size() != 0 ? types.stream().map(Class::getSimpleName).collect(Collectors.joining(",")) : "") + ")\n", 10, Color.BLACK, false);
+                		+ " " + (modifier.length != 0 ? Arrays.toString(modifier) : "") + " ", 10, Color.BLACK,
+                		false);
+                appendText(methodPane, doc, "Constructor(" + (types.size() != 0 ? 
+                		types.stream().map(Class::getSimpleName).collect(Collectors.joining(",")) : "") + ")\n",
+                		10, Color.BLACK, false);
             }
         }
 		
@@ -145,15 +165,18 @@ public class EntityPanel<T extends Entity> extends JPanel {
             appendText(methodPane, doc, "  ", 10, Color.BLACK, false);
             appendText(methodPane, doc, getVisibilitySign(method.getModifier().getAccess()) 
             		+ " " + (modifier.length == 0 ? "" : Arrays.toString(modifier)) + " ", 10, Color.BLACK, false);
-            appendText(methodPane, doc, method.getName() + "(" + (types.size() != 0 ? types.stream().map(Class::getSimpleName).collect(Collectors.joining(",")) : "") + ") : " 
-            		+ method.getReturnType().substring(method.getReturnType().lastIndexOf('.') + 1) + "\n", 10, Color.BLACK, false);
+            appendText(methodPane, doc, method.getName() + "(" + (types.size() != 0 ?
+            		types.stream().map(Class::getSimpleName).collect(Collectors.joining(",")) : "") + ") : " 
+            		+ method.getReturnType().substring(method.getReturnType().lastIndexOf('.') + 1) + "\n", 10,
+            		Color.BLACK, false);
         }
 		return methodPane;		
 	}
 	
 	
 	
-	private void appendText(JTextPane outputPane, StyledDocument doc, String text, int fontSize, Color color, boolean bold) {
+	private void appendText(JTextPane outputPane, StyledDocument doc, String text, int fontSize, Color color, 
+			boolean bold) {
         try {
             Style style = outputPane.addStyle("CustomStyle", null);
             StyleConstants.setFontSize(style, fontSize);
@@ -178,4 +201,23 @@ public class EntityPanel<T extends Entity> extends JPanel {
 			return "";
 		}
 	}
+
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(Dimension dimension) {
+		this.dimension = dimension;
+	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
+	
+	
+	
 }

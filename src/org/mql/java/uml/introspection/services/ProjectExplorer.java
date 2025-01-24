@@ -40,16 +40,23 @@ public class ProjectExplorer {
 		return project;
 	}
 	
-	public List<Entity> getEntities(Project proj){
+	public static List<Entity> getEntities(Project proj){
 		List<Entity> listEntity = new Vector<>();
 		for (Package pack : proj.getPackages()) {
 			listEntity.addAll(pack.getClasses());
 			listEntity.addAll(pack.getInterfaces());
 			listEntity.addAll(pack.getAnnotations());
 			listEntity.addAll(pack.getEnums());
+				
 		}
 		return listEntity;
 		
+	}
+	
+	
+	public Package findPackageByName(Project proj, String name) {
+		return proj.getPackages().stream()
+		.filter(e -> e.getName().equals(name)).findFirst().orElse(null);
 	}
 
 }

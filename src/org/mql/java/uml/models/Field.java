@@ -40,7 +40,7 @@ public class Field {
 	public void setModifier(Modifier modifer) {
 		this.modifier = modifer;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Field [name=" + name + ", type=" + type + ", modifer=" + modifier + "]";

@@ -371,5 +371,7 @@ public class ComponentMover extends MouseAdapter
 				destination.validate();
 			}
 		}
+		
+		
 	}
 }
