@@ -31,12 +31,6 @@ public class ProjectXmlParser {
 		XMLNode packageNodes[] = root.children();
 		System.out.println("nbr packages : " + packageNodes.length);
 		
-		//ClassParser parser = new ClassParser(); //needed in FieldType Class<?>
-		//try{ 
-		//Class.forName("java.lang." + "String");	ifit's wrapperclasse //java.util => hashTable and list	
-			
-		//}catch(Exception e) { e.printStackTrace(); }
-		
 		proj.setName(root.attribute("name"));
 
 		
@@ -44,6 +38,7 @@ public class ProjectXmlParser {
 			Package packge = new Package();
 			packge.setName(packageNode.attribute("name"));
 			
+			// Parsing classes
 			for (XMLNode classeNode : packageNode.child("classes").children()) {
 				Classe classe = new Classe();
 				classe.setName(classeNode.attribute("name"));
@@ -65,7 +60,7 @@ public class ProjectXmlParser {
 					constructor.setName(constructorNode.attribute("name"));
 					constructors.add(constructor);
 				}
-				classe.setFields(fields);
+				classe.setConstructors(constructors);
 				
 				List<Method> methods = new Vector<Method>();
 				for (XMLNode methodNode : classeNode.child("methods").children()) {
@@ -86,6 +81,7 @@ public class ProjectXmlParser {
 				packge.addClasse(classe);
 			}
 			
+			// Parsing interfaces
 			for (XMLNode interfaceNode : packageNode.child("interfaces").children()) {
 				Interface interf = new Interface();
 				interf.setName(interfaceNode.attribute("name"));
@@ -123,6 +119,7 @@ public class ProjectXmlParser {
 				packge.getInterfaces().add(interf);
 			}			
 			
+			// Parsing annotations
 			for (XMLNode annotationNode : packageNode.child("annotations").children()) {
 				Annotation annotation = new Annotation();
 				annotation.setName(annotationNode.attribute("name"));
@@ -132,6 +129,7 @@ public class ProjectXmlParser {
 				packge.getAnnotations().add(annotation);
 			}
 			
+			// Parsing enums
 			for (XMLNode enumNode : packageNode.child("enums").children()) {
 				Enum enumeration = new Enum();
 				enumeration.setName(enumNode.attribute("name"));
@@ -140,11 +138,20 @@ public class ProjectXmlParser {
 				}
 				packge.getEnums().add(enumeration);
 			}
-
+			
+			// Parsing additional elements (added here)
+			XMLNode additionalElementsNode = packageNode.child("additionalElements");
+			if (additionalElementsNode != null) {
+				for (XMLNode additionalNode : additionalElementsNode.children()) {
+					// Add logic to parse additional elements based on XML structure
+					// Example: Handle additional data like metadata, dependencies, etc.
+					System.out.println("Additional element: " + additionalNode.getValue());
+				}
+			}
+			
 			packages.add(packge);
 		}
 		proj.setPackages(packages);
 		return proj;
-		
 	}
 }

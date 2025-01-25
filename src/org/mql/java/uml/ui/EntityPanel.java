@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 import java.util.stream.Collectors;
 
 import javax.swing.BoxLayout;
@@ -27,6 +28,7 @@ import org.mql.java.uml.models.Enum;
 import org.mql.java.uml.models.Field;
 import org.mql.java.uml.models.Interface;
 import org.mql.java.uml.models.Method;
+import org.mql.java.uml.models.Modifier;
 import org.mql.java.uml.ui.tools.ComponentMover;
 
 public class EntityPanel<T extends Entity> extends JPanel {
@@ -146,10 +148,17 @@ public class EntityPanel<T extends Entity> extends JPanel {
 		StyledDocument doc = methodPane.getStyledDocument();
         if(constructeurs != null) {
         	for (Constructeur constructeur : constructeurs) {
-        		String[] modifier = constructeur.getModifier().getNonAccess();
+        		String[] modifier = {};
+        		Visibility access = Visibility.DEFAULT;
+        		Modifier mod = constructeur.getModifier();
+        		if(constructeur.getModifier() != null) {
+        			modifier = mod.getNonAccess();
+        			access = mod.getAccess();
+        		}
+        		
         		List<Class<?>> types = constructeur.getParameterTypes();
                 appendText(methodPane, doc, "  ", 10, Color.BLACK, false);
-                appendText(methodPane, doc, getVisibilitySign(constructeur.getModifier().getAccess()) 
+                appendText(methodPane, doc, getVisibilitySign(access) 
                 		+ " " + (modifier.length != 0 ? Arrays.toString(modifier) : "") + " ", 10, Color.BLACK,
                 		false);
                 appendText(methodPane, doc, "Constructor(" + (types.size() != 0 ? 
@@ -159,16 +168,33 @@ public class EntityPanel<T extends Entity> extends JPanel {
         }
 		
 		for (Method method : methods) {
-			String[] modifier = method.getModifier().getNonAccess();
+			String[] modifier = {};
+    		Visibility access = Visibility.DEFAULT;
+    		Modifier mod = method.getModifier();
+    		if(method.getModifier() != null) {
+    			modifier = mod.getNonAccess();
+    			access = mod.getAccess();
+    		}
 			
-			List<Class<?>> types = method.getParameterTypes();
-            appendText(methodPane, doc, "  ", 10, Color.BLACK, false);
-            appendText(methodPane, doc, getVisibilitySign(method.getModifier().getAccess()) 
-            		+ " " + (modifier.length == 0 ? "" : Arrays.toString(modifier)) + " ", 10, Color.BLACK, false);
-            appendText(methodPane, doc, method.getName() + "(" + (types.size() != 0 ?
-            		types.stream().map(Class::getSimpleName).collect(Collectors.joining(",")) : "") + ") : " 
-            		+ method.getReturnType().substring(method.getReturnType().lastIndexOf('.') + 1) + "\n", 10,
-            		Color.BLACK, false);
+    		List<Class<?>> types = method.getParameterTypes();
+    		if (types == null) {
+    		    types = new Vector<>();
+    		}
+
+    		appendText(methodPane, doc, "  ", 10, Color.BLACK, false);
+    		appendText(methodPane, doc, getVisibilitySign(access) 
+    		        + " " + (modifier.length == 0 ? "" : Arrays.toString(modifier)) + " ", 10, Color.BLACK, false);
+
+    		
+    		String returnType = method.getReturnType();
+    		String formattedReturnType = (returnType != null) 
+    		        ? returnType.substring(returnType.lastIndexOf('.') + 1) 
+    		        : "void"; 
+
+    		appendText(methodPane, doc, method.getName() + "(" + 
+    		        (types.isEmpty() ? "" : types.stream().map(Class::getSimpleName).collect(Collectors.joining(","))) + 
+    		        ") : " + formattedReturnType + "\n", 10, Color.BLACK, false);
+
         }
 		return methodPane;		
 	}

@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.mql.java.uml.introspection.xml.ProjectXmlParser;
+import org.mql.java.uml.models.Project;
+
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -43,14 +46,18 @@ public class MainFrame extends JFrame {
         JPanel buttonsPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 20) );
         
         JButton generateClassButton = new JButton("Générer Diagramme de Classe");
+        JButton XMLgenerateClassButton = new JButton("Générer Diagramme de Classe Depuis fichierXML");
         JButton generatePackageButton = new JButton("Générer Diagramme de Package");
         
         generateClassButton.setBorder(new LineBorder(Color.decode("#87ceeb"), 6, true));
         generateClassButton.setBackground(Color.decode("#87ceeb"));
+        XMLgenerateClassButton.setBorder(new LineBorder(Color.decode("#87ceeb"), 6, true));
+        XMLgenerateClassButton.setBackground(Color.decode("#87ceeb"));
         generatePackageButton.setBorder(new LineBorder(Color.decode("#87ceeb"), 6, true));
         generatePackageButton.setBackground(Color.decode("#87ceeb"));
         
         buttonsPane.add(generateClassButton);
+        buttonsPane.add(XMLgenerateClassButton);
         buttonsPane.add(generatePackageButton);
         
         inputPanel.add(new JLabel("Veuillez insérer le chemin de projet (bin): "));
@@ -61,6 +68,7 @@ public class MainFrame extends JFrame {
         
         generateClassButton.addActionListener(this::generateClassDiagram);
         generatePackageButton.addActionListener(this::generatePackageDiagram);
+        XMLgenerateClassButton.addActionListener(this::XMLgenerateClassDiagram);
     }
 
     
@@ -73,6 +81,13 @@ public class MainFrame extends JFrame {
 		}else
 			JOptionPane.showMessageDialog(this, "Veuillez insérer un chemin valide (bin)!");
 	}
+    
+    private void XMLgenerateClassDiagram(ActionEvent e) {
+		ProjectXmlParser parser = new ProjectXmlParser();
+		Project project = parser.parse("resources/project.xml");
+			dispose();
+			new ClassDiagramFrame(project);
+		}
     
     private void generatePackageDiagram(ActionEvent e) {
 		String binPath = textField.getText();

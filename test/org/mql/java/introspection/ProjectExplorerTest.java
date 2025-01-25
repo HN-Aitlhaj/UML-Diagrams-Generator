@@ -4,20 +4,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mql.java.uml.introspection.services.ProjectExplorer;
+import org.mql.java.uml.introspection.xml.XMLGenerator;
 import org.mql.java.uml.models.Entity;
 import org.mql.java.uml.models.Package;
 import org.mql.java.uml.models.Project;
 
 class ProjectExplorerTest {
 
+	static Project project;
+	@BeforeAll
+	static void scanProject() {
+		String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations\\bin";
+		System.out.println(path);
+		//path = System.getProperty("java.class.path");
+		project = ProjectExplorer.scan(path);
+	}
+	
 	@Test
 	void test() {
-		String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations\\bin";
-		//path = System.getProperty("java.class.path");
-		System.out.println(path);
-		Project project = ProjectExplorer.scan(path);
 		
 		System.out.println("\nProject : " + project.getName());
 		for(Package packge: project.getPackages()) {
@@ -29,11 +36,7 @@ class ProjectExplorerTest {
 	
 	@Test
 	void entityTest() {
-		String path = "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\p03-reflection-and-annotations\\bin";
-		//path = System.getProperty("java.class.path");
-		System.out.println(path);
-
-		Project project = ProjectExplorer.scan(path);
+		
 		List<Entity> entityList = ProjectExplorer.getEntities(project);
 		for (Entity entity : entityList) {
 		    System.out.println("Entity: " + entity.getName());
@@ -41,6 +44,15 @@ class ProjectExplorerTest {
 		
 		assertNotNull(entityList);
 
+	}
+	
+	@Test
+	void XMLGenerator() {
+		//Project project = new Project("MyProject", "binPa", new Vector<Package>(), null);
+		XMLGenerator generator = new XMLGenerator();
+		generator.generateXML(project, "resources/generatedProject.xml");
+		
+		assertNotNull(generator);
 	}
 
 }

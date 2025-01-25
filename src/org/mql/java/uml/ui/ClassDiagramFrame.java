@@ -32,6 +32,17 @@ public class ClassDiagramFrame extends JFrame {
             generateDiagram();
             generateRelations();
         }
+    }    
+    
+    public ClassDiagramFrame(Project project) {
+        entities = new Vector<>();
+        userInterface();
+        this.project = project;
+        if (project != null) {
+        	this.entities = ProjectExplorer.getEntities(project);
+            generateDiagram();
+            generateRelations();
+        }
     }
 
     private void userInterface() {
