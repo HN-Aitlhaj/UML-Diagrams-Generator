@@ -2,6 +2,8 @@ package org.mql.java.uml.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -9,6 +11,8 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import org.mql.java.uml.enums.RelationType;
 import org.mql.java.uml.introspection.services.ProjectExplorer;
@@ -28,22 +32,26 @@ public class ClassDiagramFrame extends JFrame {
     public ClassDiagramFrame(String path) {
         entities = new Vector<>();
         userInterface();
-        project = scan(path);
-        if (project != null) {
-            generateDiagram();
-            generateRelations();
-        }
+        EventQueue.invokeLater(() -> {
+            project = scan(path);
+            if (project != null) {
+                generateDiagram();
+                generateRelations();
+            }
+        });
     }    
     
     public ClassDiagramFrame(Project project) {
         entities = new Vector<>();
         userInterface();
-        this.project = project;
-        if (project != null) {
-        	this.entities = ProjectExplorer.getEntities(project);
-            generateDiagram();
-            generateRelations();
-        }
+        EventQueue.invokeLater(() -> {
+            this.project = project;
+            if (project != null) {
+                this.entities = ProjectExplorer.getEntities(project);
+                generateDiagram();
+                generateRelations();
+            }
+        });
     }
 
     private void userInterface() {
@@ -51,35 +59,47 @@ public class ClassDiagramFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        
         contentPanel = new JPanel();
         contentPanel.setLayout(null);
         contentPanel.setBackground(Color.white);
-        add(contentPanel);
+        contentPanel.setPreferredSize(new Dimension(1600, 1400));
 
         relationLayer = new RelationLayer();
-        relationLayer.setBounds(0, 0, getWidth(), getHeight());
+        relationLayer.setBounds(0, 0, 1600, 1400);
         contentPanel.add(relationLayer);
+
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane);
 
         setVisible(true);
     }
 
     public void generateDiagram() {
+        int x = 50;
+        int y = 50;
+        int padding = 100;
+
         for (Entity entity : entities) {
             EntityPanel<Entity> entityPanel = new EntityPanel<>(entity);
-            // Set the entity's position and size directly
-            entityPanel.setBounds((int) (Math.random() * 800), (int) (Math.random() * 600),
-            		(int)(entityPanel.getPreferredSize().getWidth()), (int)(entityPanel.getPreferredSize().getHeight()));
+            entityPanel.setBounds(x, y, (int)(entityPanel.getPreferredSize().getWidth()), 
+                                  (int)(entityPanel.getPreferredSize().getHeight()));
             contentPanel.add(entityPanel);
             entityPanelsMap.put(entity.getName(), entityPanel);
+
+            x += entityPanel.getWidth() + padding;
+            if (x > contentPanel.getWidth() - 200) {
+                x = 50;
+                y += entityPanel.getHeight() + padding;
+            }
         }
-        revalidate();
-        repaint();
+        contentPanel.revalidate();
+        contentPanel.repaint();
     }
 
     public void generateRelations() {
         for (Entry<String, List<Relation>> entry : project.getRelations().entrySet()) {
-            //String key = entry.getKey();
             List<Relation> relations = entry.getValue();
             for (Relation relation : relations) {
                 EntityPanel<Entity> srcPanel = entityPanelsMap.get(relation.getSouceClass().getName());
@@ -93,13 +113,13 @@ public class ClassDiagramFrame extends JFrame {
     }
 
     private Project scan(String path) {
-        path = !path.isEmpty() ? path : "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\AIT-LHAJ HANANE - Generics\\bin";
+        path = !path.isEmpty() ? path : "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\AIT-LHAJ HANANE - UML-Diagrams-Generator\\bin";
         this.project = ProjectExplorer.scan(path);
         this.entities = ProjectExplorer.getEntities(project);
         if(project != null) {
-        	XMLGenerator generator = new XMLGenerator();
-			generator.generateXML(project, "resources/generatedProject.xml");
-		}
+            XMLGenerator generator = new XMLGenerator();
+            generator.generateXML(project, "resources/generatedProject.xml");
+        }
         return project;
     }
 

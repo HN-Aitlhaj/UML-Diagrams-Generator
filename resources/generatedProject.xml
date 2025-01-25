@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project binPath="D:\MQL\JAVA\eclipse-workspace_2024-2025\p03-reflection-and-annotations\bin" name="p03-reflection-and-annotations">
-    <package name="org.mql.java.action">
+<project binPath="D:\MQL\JAVA\eclipse-workspace_2024-2025\AIT-LHAJ HANANE - UML-Diagrams-Generator\bin" name="AIT-LHAJ HANANE - UML-Diagrams-Generator">
+    <package name="org.mql.java.introspection.ui">
         <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.action.EditAction">
-                <superClass>java.lang.Object</superClass>
+            <classe modifier="PUBLIC []" name="org.mql.java.introspection.ui.RelationPanelExample">
+                <superClass>javax.swing.JFrame</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.action.EditAction"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.introspection.ui.RelationPanelExample"/>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC []" name="copy" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="paste" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="cut" returnType="java.lang.String"/>
-                </methods>
-                <internClasses/>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.action.FileAction">
-                <superClass>java.lang.Object</superClass>
-                <interfaces/>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.action.FileAction"/>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC []" name="exit" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="save" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="open" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="newFile" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="saveAs" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC [static]" name="main" returnType="void">
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="exp01" returnType="void"/>
                 </methods>
                 <internClasses/>
             </classe>
@@ -37,150 +22,198 @@
         <enums/>
         <annotations/>
     </package>
-    <package name="org.mql.java.enumerations">
+    <package name="org.mql.java.introspection">
         <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.enumerations.Examples">
+            <classe modifier="PUBLIC []" name="org.mql.java.introspection.ClassParserTest">
                 <superClass>java.lang.Object</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.enumerations.Examples"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.introspection.ClassParserTest"/>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC [static]" name="main" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
-                    </method>
-                    <method modifier="DEFAULT []" name="exp01" returnType="void"/>
+                    <method modifier="DEFAULT [static]" name="parserTest" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testFields" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testGetInterfaces_WithInterfaces" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testGetInterfaces_EmptyClass" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testGetInterfaces_NoInterfaces" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testGetInterfaces_NullClass" returnType="void"/>
+                    <method modifier="PUBLIC []" name="testGetInterfaces_Recursion" returnType="void"/>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="DEFAULT []" name="org.mql.java.introspection.ProjectIntrospectionTest">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="DEFAULT []" name="org.mql.java.introspection.ProjectIntrospectionTest"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="DEFAULT []" name="projectExplorertest" returnType="void"/>
+                    <method modifier="DEFAULT []" name="XMLGeneratorTest" returnType="void"/>
+                    <method modifier="DEFAULT []" name="entityListTest" returnType="void"/>
+                    <method modifier="DEFAULT []" name="XMIGeneratorTest" returnType="void"/>
+                    <method modifier="DEFAULT [static]" name="scanProject" returnType="void"/>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="DEFAULT []" name="org.mql.java.introspection.RelationMapperTest">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="DEFAULT []" name="org.mql.java.introspection.RelationMapperTest"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="DEFAULT []" name="test" returnType="void"/>
                 </methods>
                 <internClasses/>
             </classe>
         </classes>
         <interfaces/>
+        <enums/>
+        <annotations/>
+    </package>
+    <package name="org.mql.java.uml.enums">
+        <classes/>
+        <interfaces/>
         <enums>
-            <enum name="org.mql.java.enumerations.BasicColor">
-                <value>BLACK</value>
-                <value>WHITE</value>
-                <value>BLUE</value>
-                <value>GREEN</value>
-                <value>CYAN</value>
-                <value>RED</value>
-                <value>YELLOW</value>
-                <value>value</value>
+            <enum name="org.mql.java.uml.enums.Multiplicity">
+                <value>ONE</value>
+                <value>ZERO_ONE</value>
+                <value>ONE_MANY</value>
+                <value>ZERO_MANY</value>
+                <value>ONE_ONE</value>
+                <value>ENUM$VALUES</value>
+            </enum>
+            <enum name="org.mql.java.uml.enums.RelationType">
+                <value>ASSOCIATION</value>
+                <value>REFLEXIVE_ASSOCIATION</value>
+                <value>AGGREGATION</value>
+                <value>COMPOSITIN</value>
+                <value>INHERITANCE</value>
+                <value>IMPLEMENTATION</value>
+                <value>ENUM$VALUES</value>
+            </enum>
+            <enum name="org.mql.java.uml.enums.Visibility">
+                <value>PUBLIC</value>
+                <value>PRIVATE</value>
+                <value>PROTECTED</value>
+                <value>DEFAULT</value>
                 <value>ENUM$VALUES</value>
             </enum>
         </enums>
         <annotations/>
     </package>
-    <package name="org.mql.java.reflection.annotations">
-        <classes/>
-        <interfaces/>
-        <enums/>
-        <annotations>
-            <annotation name="org.mql.java.reflection.annotations.Controller">
-                <value name="value" returnType="java.lang.String"/>
-            </annotation>
-            <annotation name="org.mql.java.reflection.annotations.Form">
-                <value name="title" returnType="java.lang.String"/>
-                <value name="labelSize" returnType="int"/>
-            </annotation>
-            <annotation name="org.mql.java.reflection.annotations.TextField">
-                <value name="size" returnType="int"/>
-                <value name="label" returnType="java.lang.String"/>
-            </annotation>
-        </annotations>
-    </package>
-    <package name="org.mql.java.reflection.dao">
+    <package name="org.mql.java.uml.introspection.services">
         <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.dao.MySQLDataSource">
-                <superClass>java.lang.Object</superClass>
-                <interfaces>
-                    <interface>org.mql.java.reflection.dao.DataSource</interface>
-                </interfaces>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.dao.MySQLDataSource"/>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC []" name="getConnection" returnType="java.sql.Connection"/>
-                </methods>
-                <internClasses/>
-            </classe>
-        </classes>
-        <interfaces>
-            <interface name="org.mql.java.reflection.dao.DataSource">
-                <extendedInterfaces/>
-                <fields/>
-                <methods>
-                    <method modifier="PUBLIC [abstract]" name="getConnection" returnType="java.sql.Connection"/>
-                </methods>
-            </interface>
-        </interfaces>
-        <enums/>
-        <annotations/>
-    </package>
-    <package name="org.mql.java.reflection.models">
-        <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.models.Product">
-                <superClass>java.lang.Object</superClass>
-                <interfaces>
-                    <interface>java.io.Serializable</interface>
-                </interfaces>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.models.Product"/>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.models.Product">
-                        <parameterType>int</parameterType>
-                        <parameterType>java.lang.String</parameterType>
-                        <parameterType>double</parameterType>
-                    </constructeur>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="setName" returnType="void">
-                        <parameterType>java.lang.String</parameterType>
-                    </method>
-                    <method modifier="PUBLIC []" name="getId" returnType="int"/>
-                    <method modifier="PUBLIC []" name="setPrice" returnType="void">
-                        <parameterType>int</parameterType>
-                    </method>
-                    <method modifier="PUBLIC []" name="getPrice" returnType="double"/>
-                    <method modifier="PUBLIC []" name="setId" returnType="void">
-                        <parameterType>int</parameterType>
-                    </method>
-                </methods>
-                <internClasses/>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.models.Technology">
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ClassParser">
                 <superClass>java.lang.Object</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.models.Technology">
-                        <parameterType>int</parameterType>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ClassParser">
                         <parameterType>java.lang.String</parameterType>
-                        <parameterType>int</parameterType>
                         <parameterType>java.lang.String</parameterType>
                     </constructeur>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.models.Technology"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ClassParser">
+                        <parameterType>java.io.File</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ClassParser">
+                        <parameterType>java.lang.Class</parameterType>
+                    </constructeur>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="setName" returnType="void">
-                        <parameterType>java.lang.String</parameterType>
+                    <method modifier="PUBLIC []" name="getSuperclass" returnType="org.mql.java.uml.models.Classe"/>
+                    <method modifier="PUBLIC []" name="getInterfaces" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getInterfaces" returnType="java.util.List">
+                        <parameterType>java.lang.Class</parameterType>
                     </method>
-                    <method modifier="PUBLIC []" name="getId" returnType="int"/>
-                    <method modifier="PUBLIC []" name="getYear" returnType="int"/>
-                    <method modifier="PUBLIC []" name="setYear" returnType="void">
+                    <method modifier="PUBLIC []" name="getFields" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getFields" returnType="java.util.List">
+                        <parameterType>java.lang.Class</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="getMethods" returnType="java.util.List">
+                        <parameterType>java.lang.Class</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getMethods" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getConstructors" returnType="java.util.List"/>
+                    <method modifier="PRIVATE []" name="getModifier" returnType="org.mql.java.uml.models.Modifier">
                         <parameterType>int</parameterType>
                     </method>
-                    <method modifier="PUBLIC []" name="getAuthor" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="setAuthor" returnType="void">
+                    <method modifier="PUBLIC []" name="getModifier" returnType="org.mql.java.uml.models.Modifier"/>
+                    <method modifier="PUBLIC []" name="getEntity" returnType="org.mql.java.uml.models.Entity"/>
+                    <method modifier="PUBLIC []" name="getInternClasses" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getCls" returnType="java.lang.Class"/>
+                    <method modifier="PUBLIC []" name="setCls" returnType="void">
+                        <parameterType>java.lang.Class</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.PackageExplorer">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.PackageExplorer"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC [static]" name="scan" returnType="java.util.List">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ProjectExplorer">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.ProjectExplorer"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC [static]" name="scan" returnType="org.mql.java.uml.models.Project">
                         <parameterType>java.lang.String</parameterType>
                     </method>
-                    <method modifier="PUBLIC []" name="setId" returnType="void">
-                        <parameterType>int</parameterType>
+                    <method modifier="PUBLIC [static]" name="getEntities" returnType="java.util.List">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                    </method>
+                    <method modifier="PRIVATE [static]" name="lambda$0" returnType="boolean">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>org.mql.java.uml.models.Package</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="findPackageByName" returnType="org.mql.java.uml.models.Package">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.RelationMapper">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.services.RelationMapper"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC [static]" name="scan" returnType="java.util.HashMap">
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                    </method>
+                    <method modifier="PRIVATE [static]" name="existsInFields" returnType="boolean">
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.lang.Class</parameterType>
+                        <parameterType>java.lang.Class</parameterType>
+                    </method>
+                    <method modifier="PUBLIC [static]" name="checkMultiplicity" returnType="org.mql.java.uml.enums.Multiplicity">
+                        <parameterType>java.lang.Class</parameterType>
+                        <parameterType>java.lang.Class</parameterType>
                     </method>
                 </methods>
                 <internClasses/>
@@ -190,158 +223,739 @@
         <enums/>
         <annotations/>
     </package>
-    <package name="org.mql.java.reflection.ui">
+    <package name="org.mql.java.uml.introspection.xml">
         <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.ui.Form">
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.Examples">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.Examples"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC [static]" name="main" returnType="void">
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </method>
+                    <method modifier="DEFAULT []" name="XMLParser" returnType="void"/>
+                    <method modifier="DEFAULT []" name="XMLGenerator" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.ProjectXmlParser">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.ProjectXmlParser"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="parse" returnType="org.mql.java.uml.models.Project">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMIGenerator">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMIGenerator"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="generateXMI" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMLGenerator">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMLGenerator"/>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="generateXML" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMLNode">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMLNode">
+                        <parameterType>org.w3c.dom.Node</parameterType>
+                    </constructeur>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.introspection.xml.XMLNode">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getValue" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="child" returnType="org.mql.java.uml.introspection.xml.XMLNode">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="attribute" returnType="java.lang.String">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="children" returnType="[Lorg.mql.java.uml.introspection.xml.XMLNode;"/>
+                    <method modifier="PUBLIC []" name="intAttribute" returnType="int">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+        </classes>
+        <interfaces/>
+        <enums/>
+        <annotations/>
+    </package>
+    <package name="org.mql.java.uml.models">
+        <classes>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Annotation">
+                <superClass>org.mql.java.uml.models.Entity</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Annotation"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Annotation">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getValues" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setValues" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Classe">
+                <superClass>org.mql.java.uml.models.Entity</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Classe"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Classe">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                        <parameterType>org.mql.java.uml.models.Classe</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getInterfaces" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getFields" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getMethods" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getConstructors" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setFields" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setInterfaces" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getModifier" returnType="org.mql.java.uml.models.Modifier"/>
+                    <method modifier="PUBLIC []" name="setConstructors" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getInternClasses" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setModifier" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setInternClasses" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setSuperClass" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Classe</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setMethods" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getSuperClass" returnType="org.mql.java.uml.models.Classe"/>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Constructeur">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Constructeur"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Constructeur">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getParameterTypes" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getModifier" returnType="org.mql.java.uml.models.Modifier"/>
+                    <method modifier="PUBLIC []" name="setModifier" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setParameterTypes" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Entity">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Entity"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Entity">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC [static]" name="main" returnType="void">
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="equals" returnType="boolean">
+                        <parameterType>java.lang.Object</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getSimpleName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getPackageName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Enum">
+                <superClass>org.mql.java.uml.models.Entity</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Enum"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Enum">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getValues" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setValues" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Field">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Field"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Field">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.lang.Class</parameterType>
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="setType" returnType="void">
+                        <parameterType>java.lang.Class</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getType" returnType="java.lang.Class"/>
+                    <method modifier="PUBLIC []" name="getModifier" returnType="org.mql.java.uml.models.Modifier"/>
+                    <method modifier="PUBLIC []" name="setModifier" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Interface">
+                <superClass>org.mql.java.uml.models.Entity</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Interface"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Interface">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getFields" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getMethods" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setFields" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getExtendedInterfaces" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setExtendedInterfaces" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setMethods" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Method">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Method"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Method">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getReturnType" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getParameterTypes" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getModifier" returnType="org.mql.java.uml.models.Modifier"/>
+                    <method modifier="PUBLIC []" name="setModifier" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Modifier</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setReturnType" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setParameterTypes" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Modifier">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Modifier">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Modifier">
+                        <parameterType>org.mql.java.uml.enums.Visibility</parameterType>
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getAccess" returnType="org.mql.java.uml.enums.Visibility"/>
+                    <method modifier="PUBLIC []" name="getNonAccess" returnType="[Ljava.lang.String;"/>
+                    <method modifier="PRIVATE [static]" name="lambda$0" returnType="boolean">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PRIVATE [static]" name="lambda$1" returnType="[Ljava.lang.String;">
+                        <parameterType>int</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setNonAccess" returnType="void">
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setAccess" returnType="void">
+                        <parameterType>org.mql.java.uml.enums.Visibility</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Package">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Package"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Package">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getInterfaces" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getClasses" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="getAnnotations" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setInterfaces" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setAnnotations" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getEnums" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="addClasse" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Classe</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setEnums" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setClasses" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Project">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Project"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Project">
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.lang.String</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.HashMap</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="getName" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getPackages" returnType="java.util.List"/>
+                    <method modifier="PUBLIC []" name="setName" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getRelations" returnType="java.util.HashMap"/>
+                    <method modifier="PUBLIC []" name="setPackages" returnType="void">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setRelations" returnType="void">
+                        <parameterType>java.util.HashMap</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getBinPath" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="setBinPath" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="addPackage" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Package</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.models.Relation">
+                <superClass>java.lang.Object</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Relation"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.models.Relation">
+                        <parameterType>org.mql.java.uml.enums.RelationType</parameterType>
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                        <parameterType>org.mql.java.uml.enums.Multiplicity</parameterType>
+                        <parameterType>org.mql.java.uml.enums.Multiplicity</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="setType" returnType="void">
+                        <parameterType>org.mql.java.uml.enums.RelationType</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="toString" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="getType" returnType="org.mql.java.uml.enums.RelationType"/>
+                    <method modifier="PUBLIC []" name="getSouceClass" returnType="org.mql.java.uml.models.Entity"/>
+                    <method modifier="PUBLIC []" name="getDestinationClass" returnType="org.mql.java.uml.models.Entity"/>
+                    <method modifier="PUBLIC []" name="getSourceMultiplicity" returnType="org.mql.java.uml.enums.Multiplicity"/>
+                    <method modifier="PUBLIC []" name="getDestinationMultiplicity" returnType="org.mql.java.uml.enums.Multiplicity"/>
+                    <method modifier="PUBLIC []" name="setDestinationMultiplicity" returnType="void">
+                        <parameterType>org.mql.java.uml.enums.Multiplicity</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setDestinationClass" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setSourceMultiplicity" returnType="void">
+                        <parameterType>org.mql.java.uml.enums.Multiplicity</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setSouceClass" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                    </method>
+                </methods>
+                <internClasses/>
+            </classe>
+        </classes>
+        <interfaces/>
+        <enums/>
+        <annotations/>
+    </package>
+    <package name="org.mql.java.uml.ui.tools">
+        <classes>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.tools.ComponentMover">
+                <superClass>java.awt.event.MouseAdapter</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.tools.ComponentMover"/>
+                    <constructeur modifier="PUBLIC [transient]" name="org.mql.java.uml.ui.tools.ComponentMover">
+                        <parameterType>java.lang.Class</parameterType>
+                        <parameterType>[Ljava.awt.Component;</parameterType>
+                    </constructeur>
+                    <constructeur modifier="PUBLIC [transient]" name="org.mql.java.uml.ui.tools.ComponentMover">
+                        <parameterType>java.awt.Component</parameterType>
+                        <parameterType>[Ljava.awt.Component;</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC []" name="mousePressed" returnType="void">
+                        <parameterType>java.awt.event.MouseEvent</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="mouseReleased" returnType="void">
+                        <parameterType>java.awt.event.MouseEvent</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="mouseDragged" returnType="void">
+                        <parameterType>java.awt.event.MouseEvent</parameterType>
+                    </method>
+                    <method modifier="PUBLIC [transient]" name="registerComponent" returnType="void">
+                        <parameterType>[Ljava.awt.Component;</parameterType>
+                    </method>
+                    <method modifier="PUBLIC [transient]" name="deregisterComponent" returnType="void">
+                        <parameterType>[Ljava.awt.Component;</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setSnapSize" returnType="void">
+                        <parameterType>java.awt.Dimension</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="setupForDragging" returnType="void">
+                        <parameterType>java.awt.event.MouseEvent</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="getBoundingSize" returnType="java.awt.Dimension">
+                        <parameterType>java.awt.Component</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="getDragDistance" returnType="int">
+                        <parameterType>int</parameterType>
+                        <parameterType>int</parameterType>
+                        <parameterType>int</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setAutoLayout" returnType="void">
+                        <parameterType>boolean</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setChangeCursor" returnType="void">
+                        <parameterType>boolean</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getDragInsets" returnType="java.awt.Insets"/>
+                    <method modifier="PUBLIC []" name="setDragInsets" returnType="void">
+                        <parameterType>java.awt.Insets</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getEdgeInsets" returnType="java.awt.Insets"/>
+                    <method modifier="PUBLIC []" name="setEdgeInsets" returnType="void">
+                        <parameterType>java.awt.Insets</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getSnapSize" returnType="java.awt.Dimension"/>
+                    <method modifier="PUBLIC []" name="isAutoLayout" returnType="boolean"/>
+                    <method modifier="PUBLIC []" name="isChangeCursor" returnType="boolean"/>
+                </methods>
+                <internClasses/>
+            </classe>
+        </classes>
+        <interfaces/>
+        <enums/>
+        <annotations/>
+    </package>
+    <package name="org.mql.java.uml.ui">
+        <classes>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.ClassDiagramFrame">
+                <superClass>javax.swing.JFrame</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.ClassDiagramFrame">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.ClassDiagramFrame">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PUBLIC [static]" name="main" returnType="void">
+                        <parameterType>[Ljava.lang.String;</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="scan" returnType="org.mql.java.uml.models.Project">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="generateDiagram" returnType="void"/>
+                    <method modifier="PRIVATE []" name="userInterface" returnType="void"/>
+                    <method modifier="PUBLIC []" name="generateRelations" returnType="void"/>
+                    <method modifier="PRIVATE []" name="lambda$0" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="lambda$1" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Project</parameterType>
+                    </method>
+                </methods>
+                <internClasses>
+                    <classe>org.mql.java.uml.ui.ClassDiagramFrame$RelationLayer</classe>
+                </internClasses>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.EntityPanel">
                 <superClass>javax.swing.JPanel</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.ui.Form">
-                        <parameterType>java.lang.String</parameterType>
-                        <parameterType>int</parameterType>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.EntityPanel"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.EntityPanel">
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
                     </constructeur>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC []" name="add" returnType="void">
+                    <method modifier="PRIVATE []" name="appendText" returnType="void">
+                        <parameterType>javax.swing.JTextPane</parameterType>
+                        <parameterType>javax.swing.text.StyledDocument</parameterType>
                         <parameterType>java.lang.String</parameterType>
                         <parameterType>int</parameterType>
+                        <parameterType>java.awt.Color</parameterType>
+                        <parameterType>boolean</parameterType>
+                    </method>
+                    <method modifier="DEFAULT [static]" name="$SWITCH_TABLE$org$mql$java$uml$enums$Visibility" returnType="[I"/>
+                    <method modifier="PUBLIC []" name="getDimension" returnType="java.awt.Dimension"/>
+                    <method modifier="PUBLIC []" name="setDimension" returnType="void">
+                        <parameterType>java.awt.Dimension</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getPosition" returnType="java.awt.Point"/>
+                    <method modifier="PRIVATE []" name="getVisibilitySign" returnType="java.lang.String">
+                        <parameterType>org.mql.java.uml.enums.Visibility</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getMethodsPane" returnType="javax.swing.JTextPane">
+                        <parameterType>java.util.List</parameterType>
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getValuesPane" returnType="javax.swing.JTextPane">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="getFieldsPane" returnType="javax.swing.JTextPane">
+                        <parameterType>java.util.List</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="getEntity" returnType="org.mql.java.uml.models.Entity"/>
+                    <method modifier="PUBLIC []" name="setEntity" returnType="void">
+                        <parameterType>org.mql.java.uml.models.Entity</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setPosition" returnType="void">
+                        <parameterType>java.awt.Point</parameterType>
                     </method>
                 </methods>
                 <internClasses/>
             </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.ui.Menu">
-                <superClass>javax.swing.JMenuBar</superClass>
-                <interfaces/>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.ui.Menu"/>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.ui.Menu">
-                        <parameterType>[[Ljava.lang.String;</parameterType>
-                    </constructeur>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC []" name="add" returnType="void">
-                        <parameterType>java.lang.Object</parameterType>
-                    </method>
-                    <method modifier="PUBLIC []" name="add" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
-                    </method>
-                </methods>
-                <internClasses>
-                    <classe>org.mql.java.reflection.ui.Menu$Action</classe>
-                </internClasses>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.ui.TestMenu">
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.MainFrame">
                 <superClass>javax.swing.JFrame</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.ui.TestMenu"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.MainFrame"/>
                 </constructeurs>
                 <methods>
                     <method modifier="PUBLIC [static]" name="main" returnType="void">
                         <parameterType>[Ljava.lang.String;</parameterType>
                     </method>
-                    <method modifier="DEFAULT []" name="exp01" returnType="void"/>
+                    <method modifier="PRIVATE []" name="userInterface" returnType="void"/>
+                    <method modifier="PRIVATE []" name="XMLgenerateClassDiagram" returnType="void">
+                        <parameterType>java.awt.event.ActionEvent</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="generateClassDiagram" returnType="void">
+                        <parameterType>java.awt.event.ActionEvent</parameterType>
+                    </method>
+                    <method modifier="PRIVATE []" name="generatePackageDiagram" returnType="void">
+                        <parameterType>java.awt.event.ActionEvent</parameterType>
+                    </method>
                 </methods>
                 <internClasses/>
             </classe>
-        </classes>
-        <interfaces/>
-        <enums/>
-        <annotations/>
-    </package>
-    <package name="org.mql.java.reflection">
-        <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.AnnotationsExamples">
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.PackageDiagramFrame">
                 <superClass>javax.swing.JFrame</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.AnnotationsExamples"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.PackageDiagramFrame">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC [static]" name="main" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
-                    </method>
-                    <method modifier="DEFAULT []" name="exp01" returnType="void"/>
-                    <method modifier="DEFAULT []" name="exp03" returnType="void"/>
-                    <method modifier="DEFAULT []" name="exp02" returnType="void"/>
-                </methods>
-                <internClasses/>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.Examples">
-                <superClass>java.lang.Object</superClass>
-                <interfaces/>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.Examples"/>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC [static]" name="main" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
-                    </method>
-                    <method modifier="PRIVATE []" name="scan" returnType="void">
-                        <parameterType>java.lang.Object</parameterType>
-                    </method>
-                    <method modifier="PRIVATE []" name="exp01" returnType="void"/>
-                    <method modifier="DEFAULT []" name="exp03" returnType="void"/>
-                    <method modifier="PRIVATE []" name="exp02" returnType="void"/>
-                </methods>
-                <internClasses/>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.FormGenerator">
-                <superClass>java.lang.Object</superClass>
-                <interfaces/>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.FormGenerator"/>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC [static]" name="generate" returnType="org.mql.java.reflection.ui.Form">
-                        <parameterType>java.lang.Object</parameterType>
-                    </method>
-                </methods>
-                <internClasses/>
-            </classe>
-            <classe modifier="PUBLIC []" name="org.mql.java.reflection.PackageExplorer">
-                <superClass>java.lang.Object</superClass>
-                <interfaces/>
-                <fields/>
-                <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.reflection.PackageExplorer"/>
-                </constructeurs>
-                <methods>
-                    <method modifier="PUBLIC [static]" name="main" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
-                    </method>
-                    <method modifier="PUBLIC []" name="scan" returnType="void">
+                    <method modifier="PRIVATE []" name="userInterface" returnType="void"/>
+                    <method modifier="PUBLIC []" name="getPreferredSize" returnType="java.awt.Dimension"/>
+                    <method modifier="PRIVATE []" name="generatePackages" returnType="void">
                         <parameterType>java.lang.String</parameterType>
                     </method>
                 </methods>
                 <internClasses/>
             </classe>
-        </classes>
-        <interfaces/>
-        <enums/>
-        <annotations/>
-    </package>
-    <package name="org.mql.java.serialisation">
-        <classes>
-            <classe modifier="PUBLIC []" name="org.mql.java.serialisation.Test">
-                <superClass>java.lang.Object</superClass>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.PackagePanel">
+                <superClass>javax.swing.JPanel</superClass>
                 <interfaces/>
                 <fields/>
                 <constructeurs>
-                    <constructeur modifier="PUBLIC []" name="org.mql.java.serialisation.Test"/>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.PackagePanel">
+                        <parameterType>java.lang.String</parameterType>
+                    </constructeur>
                 </constructeurs>
                 <methods>
-                    <method modifier="PUBLIC [static]" name="main" returnType="void">
-                        <parameterType>[Ljava.lang.String;</parameterType>
+                    <method modifier="PUBLIC []" name="setTitle" returnType="void">
+                        <parameterType>java.lang.String</parameterType>
                     </method>
-                    <method modifier="DEFAULT []" name="exp01" returnType="void"/>
-                    <method modifier="DEFAULT []" name="exp02" returnType="void"/>
+                    <method modifier="PUBLIC []" name="getTitle" returnType="java.lang.String"/>
+                </methods>
+                <internClasses/>
+            </classe>
+            <classe modifier="PUBLIC []" name="org.mql.java.uml.ui.RelationPanel">
+                <superClass>javax.swing.JPanel</superClass>
+                <interfaces/>
+                <fields/>
+                <constructeurs>
+                    <constructeur modifier="PUBLIC []" name="org.mql.java.uml.ui.RelationPanel">
+                        <parameterType>org.mql.java.uml.ui.EntityPanel</parameterType>
+                        <parameterType>org.mql.java.uml.ui.EntityPanel</parameterType>
+                        <parameterType>org.mql.java.uml.enums.RelationType</parameterType>
+                    </constructeur>
+                </constructeurs>
+                <methods>
+                    <method modifier="PRIVATE []" name="getIntersection" returnType="java.awt.Point">
+                        <parameterType>java.awt.Rectangle</parameterType>
+                        <parameterType>java.awt.Rectangle</parameterType>
+                    </method>
+                    <method modifier="PROTECTED []" name="paintComponent" returnType="void">
+                        <parameterType>java.awt.Graphics</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="drawDashedLine" returnType="void">
+                        <parameterType>java.awt.Graphics</parameterType>
+                        <parameterType>int</parameterType>
+                        <parameterType>int</parameterType>
+                        <parameterType>int</parameterType>
+                        <parameterType>int</parameterType>
+                    </method>
                 </methods>
                 <internClasses/>
             </classe>
