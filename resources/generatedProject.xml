@@ -11,8 +11,8 @@
                 </constructeurs>
                 <methods>
                     <method modifier="PUBLIC []" name="copy" returnType="java.lang.String"/>
-                    <method modifier="PUBLIC []" name="cut" returnType="java.lang.String"/>
                     <method modifier="PUBLIC []" name="paste" returnType="java.lang.String"/>
+                    <method modifier="PUBLIC []" name="cut" returnType="java.lang.String"/>
                 </methods>
                 <internClasses/>
             </classe>
@@ -141,13 +141,13 @@
                         <parameterType>java.lang.String</parameterType>
                     </method>
                     <method modifier="PUBLIC []" name="getId" returnType="int"/>
-                    <method modifier="PUBLIC []" name="setId" returnType="void">
-                        <parameterType>int</parameterType>
-                    </method>
                     <method modifier="PUBLIC []" name="setPrice" returnType="void">
                         <parameterType>int</parameterType>
                     </method>
                     <method modifier="PUBLIC []" name="getPrice" returnType="double"/>
+                    <method modifier="PUBLIC []" name="setId" returnType="void">
+                        <parameterType>int</parameterType>
+                    </method>
                 </methods>
                 <internClasses/>
             </classe>
@@ -175,12 +175,12 @@
                     <method modifier="PUBLIC []" name="setYear" returnType="void">
                         <parameterType>int</parameterType>
                     </method>
-                    <method modifier="PUBLIC []" name="setId" returnType="void">
-                        <parameterType>int</parameterType>
-                    </method>
                     <method modifier="PUBLIC []" name="getAuthor" returnType="java.lang.String"/>
                     <method modifier="PUBLIC []" name="setAuthor" returnType="void">
                         <parameterType>java.lang.String</parameterType>
+                    </method>
+                    <method modifier="PUBLIC []" name="setId" returnType="void">
+                        <parameterType>int</parameterType>
                     </method>
                 </methods>
                 <internClasses/>

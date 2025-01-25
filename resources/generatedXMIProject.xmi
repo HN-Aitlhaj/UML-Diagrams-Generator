@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<XMI xmlns:uml="http://www.omg.org/spec/UML/20090901" xmlns:xmi="http://www.omg.org/XMI" version="2.1">
+    <uml:Model name="p03-reflection-and-annotations" xmi:type="uml:Model">
+        <packagedElement name="org.mql.java.action" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.action.EditAction" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="copy" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="paste" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="cut" returnType="java.lang.String" visibility="PUBLIC []"/>
+            </packagedElement>
+            <packagedElement name="org.mql.java.action.FileAction" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="exit" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="save" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="open" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="newFile" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="saveAs" returnType="java.lang.String" visibility="PUBLIC []"/>
+            </packagedElement>
+        </packagedElement>
+        <packagedElement name="org.mql.java.enumerations" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.enumerations.Examples" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="exp01" returnType="void" visibility="DEFAULT []"/>
+            </packagedElement>
+            <packagedElement name="org.mql.java.enumerations.BasicColor" xmi:type="uml:Enumeration">
+                <ownedLiteral name="BLACK"/>
+                <ownedLiteral name="WHITE"/>
+                <ownedLiteral name="BLUE"/>
+                <ownedLiteral name="GREEN"/>
+                <ownedLiteral name="CYAN"/>
+                <ownedLiteral name="RED"/>
+                <ownedLiteral name="YELLOW"/>
+                <ownedLiteral name="value"/>
+                <ownedLiteral name="ENUM$VALUES"/>
+            </packagedElement>
+        </packagedElement>
+        <packagedElement name="org.mql.java.reflection.annotations" xmi:type="uml:Package">
+            <ownedComment name="org.mql.java.reflection.annotations.Controller">
+                <value name="value" returnType="java.lang.String"/>
+            </ownedComment>
+            <ownedComment name="org.mql.java.reflection.annotations.Form">
+                <value name="title" returnType="java.lang.String"/>
+                <value name="labelSize" returnType="int"/>
+            </ownedComment>
+            <ownedComment name="org.mql.java.reflection.annotations.TextField">
+                <value name="size" returnType="int"/>
+                <value name="label" returnType="java.lang.String"/>
+            </ownedComment>
+        </packagedElement>
+        <packagedElement name="org.mql.java.reflection.dao" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.reflection.dao.MySQLDataSource" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="getConnection" returnType="java.sql.Connection" visibility="PUBLIC []"/>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.dao.DataSource" xmi:type="uml:Interface"/>
+        </packagedElement>
+        <packagedElement name="org.mql.java.reflection.models" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.reflection.models.Product" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="getName" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="toString" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="setName" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.String"/>
+                </ownedOperation>
+                <ownedOperation name="getId" returnType="int" visibility="PUBLIC []"/>
+                <ownedOperation name="setPrice" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="int"/>
+                </ownedOperation>
+                <ownedOperation name="getPrice" returnType="double" visibility="PUBLIC []"/>
+                <ownedOperation name="setId" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="int"/>
+                </ownedOperation>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.models.Technology" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="getName" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="toString" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="setName" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.String"/>
+                </ownedOperation>
+                <ownedOperation name="getId" returnType="int" visibility="PUBLIC []"/>
+                <ownedOperation name="getYear" returnType="int" visibility="PUBLIC []"/>
+                <ownedOperation name="setYear" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="int"/>
+                </ownedOperation>
+                <ownedOperation name="getAuthor" returnType="java.lang.String" visibility="PUBLIC []"/>
+                <ownedOperation name="setAuthor" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.String"/>
+                </ownedOperation>
+                <ownedOperation name="setId" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="int"/>
+                </ownedOperation>
+            </packagedElement>
+        </packagedElement>
+        <packagedElement name="org.mql.java.reflection.ui" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.reflection.ui.Form" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="javax.swing.JPanel"/>
+                <ownedOperation name="add" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.String"/>
+                    <ownedParameter type="int"/>
+                </ownedOperation>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.ui.Menu" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="javax.swing.JMenuBar"/>
+                <ownedOperation name="add" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.Object"/>
+                </ownedOperation>
+                <ownedOperation name="add" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.ui.TestMenu" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="javax.swing.JFrame"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="exp01" returnType="void" visibility="DEFAULT []"/>
+            </packagedElement>
+        </packagedElement>
+        <packagedElement name="org.mql.java.reflection" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.reflection.AnnotationsExamples" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="javax.swing.JFrame"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="exp01" returnType="void" visibility="DEFAULT []"/>
+                <ownedOperation name="exp03" returnType="void" visibility="DEFAULT []"/>
+                <ownedOperation name="exp02" returnType="void" visibility="DEFAULT []"/>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.Examples" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="scan" returnType="void" visibility="PRIVATE []">
+                    <ownedParameter type="java.lang.Object"/>
+                </ownedOperation>
+                <ownedOperation name="exp01" returnType="void" visibility="PRIVATE []"/>
+                <ownedOperation name="exp03" returnType="void" visibility="DEFAULT []"/>
+                <ownedOperation name="exp02" returnType="void" visibility="PRIVATE []"/>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.FormGenerator" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="generate" returnType="org.mql.java.reflection.ui.Form" visibility="PUBLIC [static]">
+                    <ownedParameter type="java.lang.Object"/>
+                </ownedOperation>
+            </packagedElement>
+            <packagedElement name="org.mql.java.reflection.PackageExplorer" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="scan" returnType="void" visibility="PUBLIC []">
+                    <ownedParameter type="java.lang.String"/>
+                </ownedOperation>
+            </packagedElement>
+        </packagedElement>
+        <packagedElement name="org.mql.java.serialisation" xmi:type="uml:Package">
+            <packagedElement name="org.mql.java.serialisation.Test" visibility="PUBLIC []" xmi:type="uml:Class">
+                <generalization general="java.lang.Object"/>
+                <ownedOperation name="main" returnType="void" visibility="PUBLIC [static]">
+                    <ownedParameter type="[Ljava.lang.String;"/>
+                </ownedOperation>
+                <ownedOperation name="exp01" returnType="void" visibility="DEFAULT []"/>
+                <ownedOperation name="exp02" returnType="void" visibility="DEFAULT []"/>
+            </packagedElement>
+        </packagedElement>
+    </uml:Model>
+</XMI>

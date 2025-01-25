@@ -81,7 +81,7 @@ public class ProjectXmlParser {
 				packge.addClasse(classe);
 			}
 			
-			// Parsing interfaces
+			
 			for (XMLNode interfaceNode : packageNode.child("interfaces").children()) {
 				Interface interf = new Interface();
 				interf.setName(interfaceNode.attribute("name"));
@@ -119,7 +119,7 @@ public class ProjectXmlParser {
 				packge.getInterfaces().add(interf);
 			}			
 			
-			// Parsing annotations
+			
 			for (XMLNode annotationNode : packageNode.child("annotations").children()) {
 				Annotation annotation = new Annotation();
 				annotation.setName(annotationNode.attribute("name"));
@@ -129,7 +129,7 @@ public class ProjectXmlParser {
 				packge.getAnnotations().add(annotation);
 			}
 			
-			// Parsing enums
+			
 			for (XMLNode enumNode : packageNode.child("enums").children()) {
 				Enum enumeration = new Enum();
 				enumeration.setName(enumNode.attribute("name"));
@@ -139,15 +139,6 @@ public class ProjectXmlParser {
 				packge.getEnums().add(enumeration);
 			}
 			
-			// Parsing additional elements (added here)
-			XMLNode additionalElementsNode = packageNode.child("additionalElements");
-			if (additionalElementsNode != null) {
-				for (XMLNode additionalNode : additionalElementsNode.children()) {
-					// Add logic to parse additional elements based on XML structure
-					// Example: Handle additional data like metadata, dependencies, etc.
-					System.out.println("Additional element: " + additionalNode.getValue());
-				}
-			}
 			
 			packages.add(packge);
 		}

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import org.mql.java.uml.enums.RelationType;
 import org.mql.java.uml.introspection.services.ProjectExplorer;
+import org.mql.java.uml.introspection.xml.XMLGenerator;
 import org.mql.java.uml.models.Entity;
 import org.mql.java.uml.models.Project;
 import org.mql.java.uml.models.Relation;
@@ -93,9 +94,13 @@ public class ClassDiagramFrame extends JFrame {
 
     private Project scan(String path) {
         path = !path.isEmpty() ? path : "D:\\MQL\\JAVA\\eclipse-workspace_2024-2025\\AIT-LHAJ HANANE - Generics\\bin";
-        Project proj = ProjectExplorer.scan(path);
-        this.entities = ProjectExplorer.getEntities(proj);
-        return proj;
+        this.project = ProjectExplorer.scan(path);
+        this.entities = ProjectExplorer.getEntities(project);
+        if(project != null) {
+        	XMLGenerator generator = new XMLGenerator();
+			generator.generateXML(project, "resources/generatedProject.xml");
+		}
+        return project;
     }
 
     public static void main(String[] args) {

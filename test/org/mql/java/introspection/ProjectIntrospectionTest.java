@@ -7,12 +7,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mql.java.uml.introspection.services.ProjectExplorer;
+import org.mql.java.uml.introspection.xml.XMIGenerator;
 import org.mql.java.uml.introspection.xml.XMLGenerator;
 import org.mql.java.uml.models.Entity;
 import org.mql.java.uml.models.Package;
 import org.mql.java.uml.models.Project;
 
-class ProjectExplorerTest {
+class ProjectIntrospectionTest {
 
 	static Project project;
 	@BeforeAll
@@ -24,7 +25,7 @@ class ProjectExplorerTest {
 	}
 	
 	@Test
-	void test() {
+	void projectExplorertest() {
 		
 		System.out.println("\nProject : " + project.getName());
 		for(Package packge: project.getPackages()) {
@@ -35,7 +36,7 @@ class ProjectExplorerTest {
 	}
 	
 	@Test
-	void entityTest() {
+	void entityListTest() {
 		
 		List<Entity> entityList = ProjectExplorer.getEntities(project);
 		for (Entity entity : entityList) {
@@ -47,10 +48,19 @@ class ProjectExplorerTest {
 	}
 	
 	@Test
-	void XMLGenerator() {
+	void XMLGeneratorTest() {
 		//Project project = new Project("MyProject", "binPa", new Vector<Package>(), null);
 		XMLGenerator generator = new XMLGenerator();
 		generator.generateXML(project, "resources/generatedProject.xml");
+		
+		assertNotNull(generator);
+	}
+	
+	@Test
+	void XMIGeneratorTest() {
+		//Project project = new Project("MyProject", "binPa", new Vector<Package>(), null);
+		XMIGenerator generator = new XMIGenerator();
+		generator.generateXMI(project, "resources/generatedXMIProject.xmi");
 		
 		assertNotNull(generator);
 	}
